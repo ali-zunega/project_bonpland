@@ -8,9 +8,9 @@ Plataforma web para la gestión y búsqueda de **propiedades inmobiliarias en La
 
 El objetivo de la plataforma es ofrecer una experiencia simple para que los usuarios puedan:
 
-* Buscar propiedades según distintos criterios
-* Visualizar detalles completos de cada inmueble
-* Contactar a la inmobiliaria con la referencia del inmueble
+- Buscar propiedades según distintos criterios
+- Visualizar detalles completos de cada inmueble
+- Contactar a la inmobiliaria con la referencia del inmueble
 
 Además, el sistema contará con un **panel administrativo** para gestionar los inmuebles publicados.
 
@@ -20,24 +20,24 @@ Además, el sistema contará con un **panel administrativo** para gestionar los 
 
 ### Usuarios
 
-* Visualizar propiedades destacadas
-* Buscar propiedades utilizando filtros
-* Ver detalles de cada propiedad
-* Contactar a la inmobiliaria
+- Visualizar propiedades destacadas
+- Buscar propiedades utilizando filtros
+- Ver detalles de cada propiedad
+- Contactar a la inmobiliaria
 
 ### Administración
 
-* Crear propiedades
-* Editar propiedades
-* Eliminar propiedades
-* Cambiar estado de disponibilidad
+- Crear propiedades
+- Editar propiedades
+- Eliminar propiedades
+- Cambiar estado de disponibilidad
 
 Estados posibles de una propiedad:
 
-* Disponible
-* Reservado
-* Vendido
-* Alquilado
+- Disponible
+- Reservado
+- Vendido
+- Alquilado
 
 ---
 
@@ -85,70 +85,69 @@ El proyecto se desarrolla de forma colaborativa con distintos roles.
 
 Responsable de:
 
-* Investigación de usuarios
-* Definición de necesidades
-* Creación de user journeys
+- Investigación de usuarios
+- Definición de necesidades
+- Creación de user journeys
 
 ## UI Design
 
 Responsable de:
 
-* Diseño visual de la aplicación
-* Sistema de diseño
-* Prototipos de interfaz
+- Diseño visual de la aplicación
+- Sistema de diseño
+- Prototipos de interfaz
 
 ## Frontend Development
 
 Responsable de:
 
-* Implementación de la interfaz
-* Integración con la API
-* Manejo del estado de la aplicación
+- Implementación de la interfaz
+- Integración con la API
+- Manejo del estado de la aplicación
 
 ## Backend Development
 
 Responsable de:
 
-* Desarrollo de la API
-* Lógica de negocio
-* Autenticación y seguridad
+- Desarrollo de la API
+- Lógica de negocio
+- Autenticación y seguridad
 
 ## Database
 
 Responsable de:
 
-* Diseño del modelo de datos
-* Optimización de consultas
-* Integridad de datos
+- Diseño del modelo de datos
+- Optimización de consultas
+- Integridad de datos
 
 ## QA / Testing
 
 Responsable de:
 
-* Testing funcional
-* Automatización de pruebas
-* Validación de funcionalidades
+- Testing funcional
+- Automatización de pruebas
+- Validación de funcionalidades
 
 ## DevOps
 
 Responsable de:
 
-* Configuración de infraestructura
-* CI/CD
-* Deploy de la aplicación
+- Configuración de infraestructura
+- CI/CD
+- Deploy de la aplicación
 
 ---
 
 # 👨‍💻 Equipo del Proyecto
 
-| Rol         | Integrante |
-| ----------- | ---------- |
-| UX Research |            |
-| UI Design   |            |
-| Frontend    |            |
-| Backend     |            |
-| QA          |            |
-| DevOps      |            |
+- **[Augusto Laguna]** - [@Augus23](https://github.com/Augus23) - _Backend Developer_
+- **[Alicia Zuñega]** - [@ali-zunega](https://github.com/ali-zunega) - _Frontend Developer_
+- **[Rodrigo Alonzo Ojeda]** - [@RodrigoPrograma](https://github.com/rodrigoprograma) - _Frontend Developer_
+- **[Anthony Bañon Arias]** - [@anthonybanion](https://github.com/anthonybanion) - _Backend Developer_
+- **[Pablo Defelitto]** - [@Pilo28](https://github.com/Pilo28) - _Project Manager (Software)_
+- **[Matias Fandiño]** - [@matifandy8](https://github.com/matifandy8) - _Fullstack Developer_
+- **[Ricardo Basten Covarrubias]** - [@ricardobasten](https://github.com/ricardobasten) - _UI/UX Designer_
 
 ---
 
@@ -156,24 +155,25 @@ Responsable de:
 
 ### Frontend
 
-* HTML
-* CSS
-* JavaScript
+- HTML
+- CSS
+- JavaScript
+- React + Vite
+- Bootstrap
 
 ### Backend
 
-* Node.js
-* Express
+- Python + Django
 
 ### Base de datos
 
-* PostgreSQL / MongoDB
+- SQL Lite
 
 ### DevOps
 
-* Docker
-* CI/CD
-* Cloud Deployment
+- Docker
+- CI/CD
+- Cloud Deployment
 
 ---
 
@@ -189,7 +189,7 @@ cd frontend
 npm install
 
 # instalar dependencias backend
-cd ../backend
+cd backend
 npm install
 ```
 
@@ -199,28 +199,29 @@ npm install
 
 El proyecto contará con distintos entornos de despliegue:
 
-* Development
-* Staging
-* Production
+- Development
+- Staging
+- Production
 
 ---
 
 # 🌐 Deploy
 
 Frontend: <!-- Link al deploy frontend   -->
+
 Backend API: <!-- Link al deploy backend / api  -->
 
 ---
 
 # 🗺️ Roadmap
 
-* [ ] Setup inicial del proyecto
-* [ ] Diseño de UI
-* [ ] Desarrollo del frontend
-* [ ] Desarrollo del backend
-* [ ] Integración API
-* [ ] Testing
-* [ ] Deploy
+- [ ] Setup inicial del proyecto
+- [ ] Diseño de UI
+- [ ] Desarrollo del frontend
+- [ ] Desarrollo del backend
+- [ ] Integración API
+- [ ] Testing
+- [ ] Deploy
 
 ---
 
