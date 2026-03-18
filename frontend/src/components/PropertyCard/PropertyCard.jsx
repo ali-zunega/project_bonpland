@@ -9,13 +9,23 @@ const PropertyCard = ({ property }) => {
       currency: "ARS",
     }).format(price);
 
+    // si esta destacada, agregar un borde amarillo a la tarjeta 
   return (
-    <div className="card mb-3 shadow-sm h-100">
-      <img
-        src={mainImage}
-        className="card-img-top"
-        alt={property.title}
-      />
+    <div className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}>
+      
+      <div className="position-relative">
+        <img
+          src={mainImage}
+          className="card-img-top"
+          alt={property.title}
+        />
+        {/*agrega una etiqueta de "Destacada" en la esquina superior izquierda si la propiedad es destacada*/}
+        {property.featured && (
+          <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
+            ⭐ Destacada
+          </span>
+        )}
+      </div>
 
       <div className="card-body">
         {/* Tipo */}
