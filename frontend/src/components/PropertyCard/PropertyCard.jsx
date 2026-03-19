@@ -1,6 +1,6 @@
 import React from "react";
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, onClick}) => {
   const mainImage = property.images?.[0];
 
   const formatPrice = (price) =>
@@ -11,7 +11,11 @@ const PropertyCard = ({ property }) => {
 
     // si esta destacada, agregar un borde amarillo a la tarjeta 
   return (
-    <div className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}>
+    
+    <div 
+    onClick={onClick} 
+    className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}
+    style={{ cursor: "pointer" }}>
       
       <div className="position-relative">
         <img

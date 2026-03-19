@@ -119,7 +119,7 @@
         "status": "reserved",
         "type": "sale",
         "images": [
-          "../../public/Media/foto8.jpeg"
+          "../../public/Media/foto8.jpg"
         ],
         "featured": true
       },
@@ -135,7 +135,7 @@
         "status": "available",
         "type": "sale",
         "images": [
-          "../../public/Media/foto9.jpeg"
+          "../../public/Media/foto9.jpg"
         ],
         "featured": false
       },
