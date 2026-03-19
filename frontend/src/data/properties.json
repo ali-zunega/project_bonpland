@@ -40,7 +40,7 @@
     "price": 80000,
     "type": "sale",
     "status": "available",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto3.jpg"]
   },
   {
     "id": 4,
@@ -54,7 +54,7 @@
     "price": 180000,
     "type": "sale",
     "status": "available",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto4.jpg"]
   },
   {
     "id": 5,
@@ -68,7 +68,7 @@
     "price": 500,
     "type": "rent",
     "status": "available",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto5.jpg"]
   },
   {
     "id": 6,
@@ -82,7 +82,7 @@
     "price": 45000,
     "type": "sale",
     "status": "available",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto6.jpg"]
   },
   {
     "id": 7,
@@ -96,7 +96,7 @@
     "price": 900,
     "type": "rent",
     "status": "available",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto7.jpg"]
   },
   {
     "id": 8,
@@ -110,6 +110,6 @@
     "price": 110000,
     "type": "sale",
     "status": "sold",
-    "images": ["https://via.placeholder.com/400x250"]
+    "images": ["../../public/Media/foto8.jpg"]
   }
 ]
