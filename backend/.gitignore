@@ -1,0 +1,70 @@
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Extensiones C
+*.so
+
+# Entornos virtuales
+venv/
+.venv/
+.env/
+
+# Archivos de Django
+*.log                 # logs del proyecto
+*.pot                 # archivos de traducción
+*.pyc                  # archivos compilados
+*.sqlite3              # base de datos SQLite
+db.sqlite3
+*.sqlite3-journal      # archivo temporal de SQLite
+
+# Archivos de medios / uploads (ej. Cloudinary cache local)
+media/
+uploads/
+*.tmp
+
+# Archivos estáticos generados
+staticfiles/
+static/
+
+# Variables de entorno
+.env
+
+# Configuración de VS Code
+.vscode/
+
+# Configuración de PyCharm
+.idea/
+
+# Archivos de macOS
+.DS_Store
+
+# Archivos de respaldo o temporales
+*.bak
+*.swp
+
+# Reportes de cobertura o testing
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+
+# Migraciones de Django (opcional versionarlas)
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Configuración local de Postgres
+*.pgpass
+
+# Node modules (si tenés frontend con npm o yarn)
+node_modules/
+
+# Archivos de empaquetado de Python
+*.egg-info/
+dist/
+build/
+
+# Caché de Cloudinary
+.cloudinary_cache/
