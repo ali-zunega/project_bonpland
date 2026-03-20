@@ -1,0 +1,13 @@
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);  
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-link {
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd;
+  transform: translateY(-1px);
+}

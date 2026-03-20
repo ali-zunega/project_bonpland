@@ -5,13 +5,13 @@ import AppRouter from './app/router';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
-    
-    
+
+
     return (
         <>
-    <Navbar />
-        <AppRouter />  
-    </>
+            <Navbar />
+            <AppRouter />
+        </>
     )
 }
 
