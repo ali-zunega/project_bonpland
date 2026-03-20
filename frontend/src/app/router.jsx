@@ -9,6 +9,7 @@ import Properties from "../pages/Properties/Properties";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 
 // Admin
+import AdminLayout from "../admin/Layout/AdminLayout";
 import Dashboard from "../admin/Dashboard/Dashboard";
 import PropertyList from "../admin/PropertyList/PropertyList";
 import PropertyForm from "../admin/PropertyForm/PropertyForm";
@@ -28,7 +29,7 @@ export default function AppRouter() {
         <Route path="/properties/:id" element={<PropertyDetails />} />
 
         {/* Rutas admin */}
-        <Route path="admin">
+        <Route path="admin" element={<AdminLayout />} >
             <Route index element={<Dashboard />} />
             <Route path="properties" element={<PropertyList />} />
             <Route path="properties/new" element={<PropertyForm />} />
