@@ -2,6 +2,7 @@ import React from "react";
 
 const PropertyCard = ({ property, onClick }) => {
   const mainImage = property.images?.[0];
+  const totalImages = property.images?.length || 0;
 
   const formatPrice = (price) =>
     new Intl.NumberFormat("es-AR", {
@@ -15,7 +16,7 @@ const PropertyCard = ({ property, onClick }) => {
     <div
       onClick={onClick}
       className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer",transition: "transform 0.2s" }}
       onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
       onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
 
@@ -31,6 +32,21 @@ const PropertyCard = ({ property, onClick }) => {
           <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
             ⭐ Destacada
           </span>
+        )}
+
+          {/* Si hay más de una imagen, mostrar un contador en la esquina superior derecha */}
+        {totalImages > 1 && (
+          <div 
+            className="position-absolute top-0 end-0 m-2 px-2 py-1 rounded shadow-sm"
+            style={{ 
+              backgroundColor: "rgba(0, 0, 0, 0.4)", 
+              color: "white", 
+              fontSize: "0.85rem",
+              backdropFilter: "blur(4px)"
+            }}
+          >
+            📷 {totalImages}
+          </div>
         )}
       </div>
 
