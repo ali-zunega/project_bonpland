@@ -1,0 +1,31 @@
+.custom-slider {
+    width: 80%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e9ecef;
+    outline: none;
+    accent-color: #7b6cf9; 
+}
+
+
+.custom-slider::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 8px rgba(13, 110, 253, 0.1);
+}
+
+.col-12 {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
