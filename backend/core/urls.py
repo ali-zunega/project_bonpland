@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, include, re_path
 from django.http import HttpResponse
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -23,6 +23,11 @@ def home(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
+    # Rutas de las apps
+    path("api/", include("properties.urls")),
+    path("api/", include("contacts.urls")),
+    path("api/", include("users.urls")),
+    path("api/", include("company.urls")),
     # API Documentation
     path(
         "swagger/",
