@@ -134,14 +134,14 @@ const PropertyDetails = () => {
           {/* Botones */}
           <div className="d-flex gap-2 mt-4">
             <button
-              className="btn btn-primary mt-3 mb-3"
+              className="btn-custom mt-3 mb-3"
               onClick={handleContact}
             >
               Me interesa esta propiedad
             </button>
             <button
-              className="btn btn-outline-secondary mt-3 mb-3"
-              onClick={() => navigate("/properties")}
+              className="btn-brand-solid mt-3 mb-3"
+              onClick={() => navigate(-1)}
             >
               ← Volver
             </button>

@@ -1,0 +1,11 @@
+#featuredCarousel {
+  padding: 0 80px; /* Creamos un "pasillo" para las flechas */
+}
+
+.carousel-control-prev {
+  left: 0; /* La flecha ahora vive en el pasillo izquierdo */
+}
+
+.carousel-control-next {
+  right: 0; /* La flecha ahora vive en el pasillo derecho */
+}

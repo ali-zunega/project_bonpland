@@ -1,3 +1,51 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
+
+:root {
+  --brand-gold: #eab975;
+  --brand-black: #000000;
+  --border-radius-lg: 10px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Estilos propiedades destacadas */
+.section-title {
+  font-family: 'Roboto', sans-serif; /* Usamos Roboto con el peso indicado */
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brand-black);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.btn-custom {
+  font-family: 'Roboto', sans-serif;
+  color:var(--brand-black) !important;
+  background-color: var(--brand-gold) ; /* O el color de fondo que pida el diseño */
+  border: 1px solid var(--brand-gold); /* Ejemplo: borde dorado */
+  border-radius: var(--border-radius-lg);
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Si el botón debe ser sólido con texto dorado: */
+.btn-brand-solid {
+  background-color: var(--brand-black);  /* Ejemplo de fondo oscuro */
+  opacity: 30%;
+  color: var(--brand-gold) !important;
+  border-radius: 10px;
+}
+
+.btn-brand-solid:hover {
+  filter: brightness(1.2);
+}
+
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

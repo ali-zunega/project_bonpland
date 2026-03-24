@@ -16,9 +16,15 @@ const PropertyCard = ({ property, onClick }) => {
     <div
       onClick={onClick}
       className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}
-      style={{ cursor: "pointer",transition: "transform 0.2s" }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+      style={{
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        border: property.featured ? "2px solid #eab975" : "1px solid rgba(0,0,0,0.125)",
+        borderRadius: "10px",
+        overflow: "hidden"
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-5px)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}>
 
       <div className="position-relative">
         <img
@@ -29,18 +35,21 @@ const PropertyCard = ({ property, onClick }) => {
         />
         {/*agrega una etiqueta de "Destacada" en la esquina superior izquierda si la propiedad es destacada*/}
         {property.featured && (
-          <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-2">
-            ⭐ Destacada
+          <span
+            className="position-absolute top-0 start-0 m-2 px-2 py-1 rounded shadow-sm fw-bold"
+            style={{ backgroundColor: "#eab975", color: "black", fontSize: "0.75rem" }}
+          >
+            ⭐ DESTACADA
           </span>
         )}
 
-          {/* Si hay más de una imagen, mostrar un contador en la esquina superior derecha */}
+        {/* Si hay más de una imagen, mostrar un contador en la esquina superior derecha */}
         {totalImages > 1 && (
-          <div 
+          <div
             className="position-absolute top-0 end-0 m-2 px-2 py-1 rounded shadow-sm"
-            style={{ 
-              backgroundColor: "rgba(0, 0, 0, 0.4)", 
-              color: "white", 
+            style={{
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+              color: "white",
               fontSize: "0.85rem",
               backdropFilter: "blur(4px)"
             }}
@@ -50,35 +59,35 @@ const PropertyCard = ({ property, onClick }) => {
         )}
       </div>
 
-      <div className="card-body">
-        {/* Tipo */}
-        <span className="badge bg-secondary mb-2 text-uppercase">
-          {property.type === "sale" ? "Venta" : "Alquiler"}
-        </span>
+      <div className="card-body d-flex flex-column">
+        <div className="mb-2">
+          <span className="badge bg-dark text-uppercase" style={{ fontSize: '0.7rem' }}>
+            {property.type === "sale" ? "Venta" : "Alquiler"}
+          </span>
+        </div>
 
-        {/* Título */}
-        <h5 className="card-title fw-semibold">{property.title}</h5>
+        <h5 className="card-title fw-semibold" style={{ color: "#000" }}>{property.title}</h5>
 
-        {/* Ubicación */}
-        <p className="card-text">
+        <p className="card-text text-muted mb-1">
           📍 {property.city}, {property.country}
         </p>
 
-        {/* Precio */}
-        <p className="card-text fw-bold fs-5 mb-2">
-          💰 {formatPrice(property.price)}
+        <p className="card-text fw-bold fs-5 mb-2" style={{ color: "#333" }}>
+          {formatPrice(property.price)}
         </p>
 
-        {/* Info extra */}
         <p className="card-text text-muted small">
           🏠 {property.rooms} amb · 📐 {property.area} m²
         </p>
-        <div className="d-flex justify-content-end mt-3">
-          <button className="btn btn-primary">
+
+        {/* El botón ahora es puramente visual ya que toda la card tiene el onClick */}
+        <div className="mt-auto d-flex justify-content-end">
+          <button className="btn-custom" style={{ pointerEvents: 'none' }}>
             Ver más
           </button>
         </div>
       </div>
+
     </div>
   );
 };
