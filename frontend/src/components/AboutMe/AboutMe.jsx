@@ -7,7 +7,7 @@ export function AboutMe() {
       <div className="row justify-content-center">
         <div className="col-lg-10">
           <div className="card shadow-sm border-0 p-4">
-            <h2 className="mb-3 text-center">Quiénes Somos</h2>
+            <h2 className="mb-3 text-center fw-bold">Quiénes Somos</h2>
             <p className="lead text-center">
               En Inmobiliaria Bonpland conectamos personas con oportunidades únicas en el mercado inmobiliario de Latinoamérica.
             </p>
