@@ -7,10 +7,10 @@ const Home = () => {
   return (
     <main>
       <section className="hero">
-        <h1>Encuentra tu hogar ideal</h1>
+        <h1 className="text-center">Encuentra tu hogar ideal</h1>
       </section>
 
-      <section className="py-5 bg-light">
+      <section className="py-3 bg-light">
         <div className="container">
           <h2 className="text-center mb-4">Propiedades Destacadas</h2>
           

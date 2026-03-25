@@ -4,7 +4,7 @@
     border-radius: 5px;
     background: #e9ecef;
     outline: none;
-    accent-color: #7b6cf9; 
+    accent-color: var(--accent-color); 
 }
 
 

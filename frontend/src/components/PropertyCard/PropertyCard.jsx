@@ -15,7 +15,7 @@ const PropertyCard = ({ property, onClick }) => {
 
     <div
       onClick={onClick}
-      className={`card mb-3 shadow-sm h-100 ${property.featured ? "border-warning" : ""}`}
+      className={`card mb-3 shadow-sm h-100 ${property.featured ?  "card-featured" : ""}`}
       style={{
         cursor: "pointer",
         transition: "all 0.3s ease",
@@ -36,8 +36,7 @@ const PropertyCard = ({ property, onClick }) => {
         {/*agrega una etiqueta de "Destacada" en la esquina superior izquierda si la propiedad es destacada*/}
         {property.featured && (
           <span
-            className="position-absolute top-0 start-0 m-2 px-2 py-1 rounded shadow-sm fw-bold"
-            style={{ backgroundColor: "#eab975", color: "black", fontSize: "0.75rem" }}
+            className="position-absolute top-0 start-0 m-2 px-2 py-1 rounded shadow-sm fw-bold badge-featured"
           >
             ⭐ DESTACADA
           </span>
@@ -46,13 +45,7 @@ const PropertyCard = ({ property, onClick }) => {
         {/* Si hay más de una imagen, mostrar un contador en la esquina superior derecha */}
         {totalImages > 1 && (
           <div
-            className="position-absolute top-0 end-0 m-2 px-2 py-1 rounded shadow-sm"
-            style={{
-              backgroundColor: "rgba(0, 0, 0, 0.4)",
-              color: "white",
-              fontSize: "0.85rem",
-              backdropFilter: "blur(4px)"
-            }}
+            className="position-absolute top-0 end-0 m-2 px-2 py-1 rounded shadow-sm badge-contador"
           >
             📷 {totalImages}
           </div>
@@ -82,7 +75,7 @@ const PropertyCard = ({ property, onClick }) => {
 
         {/* El botón ahora es puramente visual ya que toda la card tiene el onClick */}
         <div className="mt-auto d-flex justify-content-end">
-          <button className="btn-custom" style={{ pointerEvents: 'none' }}>
+          <button className="btn btn-primary" style={{ pointerEvents: 'none' }}>
             Ver más
           </button>
         </div>
