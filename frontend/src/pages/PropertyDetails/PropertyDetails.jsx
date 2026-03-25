@@ -100,7 +100,7 @@ const PropertyDetails = () => {
         <div className="col-md-6">
           <div className="d-flex gap-2 mb-2 mt-3">
             {property.featured && (
-              <span className="badge bg-warning text-dark px-3 py-2">
+              <span className="badge-featured px-2 py-1 rounded shadow-sm fw-bold text-uppercase">
                 ⭐ Destacada
               </span>
             )}
@@ -134,13 +134,13 @@ const PropertyDetails = () => {
           {/* Botones */}
           <div className="d-flex gap-2 mt-4">
             <button
-              className="btn-custom mt-3 mb-3"
+              className="btn btn-primary mt-3 mb-3"
               onClick={handleContact}
             >
               Me interesa esta propiedad
             </button>
             <button
-              className="btn-brand-solid mt-3 mb-3"
+              className="btn btn-brand-solid mt-3 mb-3"
               onClick={() => navigate(-1)}
             >
               ← Volver

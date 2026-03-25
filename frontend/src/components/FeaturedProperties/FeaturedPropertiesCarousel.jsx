@@ -74,7 +74,7 @@ const FeaturedPropertiesCarousel = ({ properties }) => {
 
             {/* boton al listado completo de propiedades*/}
             <div className="text-center mt-4">
-                <Link to="/properties" className="btn-custom">
+                <Link to="/properties" className="btn btn-primary">
                     Explorar todo el catálogo
                 </Link>
             </div>

@@ -1,0 +1,58 @@
+.timeline-line {
+    width: 4px;
+    background-color: var(--brand-gold);
+    z-index: 1;
+    height: 90%;
+}
+
+.timeline-dot {
+    z-index: 10;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 20px;
+    background-color: var(--brand-gold);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(234, 185, 117, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.card-timeline {
+    border: 1px solid #f8f0cfca;
+    border-left: 5px solid var(--brand-gold);
+    transition: transform 0.3s ease;
+}
+
+.card-timeline:hover {
+    transform: translateY(-4px);
+}
+
+.timeline-row:hover .timeline-dot {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* --- Ajustes Responsive (Móvil) --- */
+
+@media (max-width: 767.98px) {
+    .timeline-row {
+        margin-left: 0;
+        margin-right: 0;
+        flex-direction: row !important;
+    }
+
+    .timeline-line {
+        left: 15px !important;
+    }
+
+    .timeline-dot {
+        left: 15px !important;
+        transform: translate(-50%, -50%);
+    }
+
+
+    /* Card con espacio a la izquierda */
+    .card-timeline {
+        margin-left: 30px;
+        width: auto;
+    }
+}
