@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import "./FeaturedPropertiesCarousel.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 
 const FeaturedPropertiesCarousel = ({ properties }) => {
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ const FeaturedPropertiesCarousel = ({ properties }) => {
                                     <div key={property.id} className={`col-${12 / itemsPerSlide} p-2`}>
                                         <PropertyCard
                                             property={property}
-                                            onClick={() => navigate(`/properties/${property.id}`)} // <-- ¡ESTO FALTABA!
+                                            onClick={() => navigate(`/properties/${property.id}`)} 
                                         />
                                     </div>
                                 ))}
@@ -74,7 +74,7 @@ const FeaturedPropertiesCarousel = ({ properties }) => {
 
             {/* boton al listado completo de propiedades*/}
             <div className="text-center mt-4">
-                <Link to="/properties" className="btn btn-primary">
+                <Link to="/properties" className="btn btn-brand">
                     Explorar todo el catálogo
                 </Link>
             </div>

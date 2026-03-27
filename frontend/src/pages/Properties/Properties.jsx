@@ -50,7 +50,7 @@ const Properties = () => {
         <div className="d-flex flex-column align-items-center w-100 py-2">
           <h1 className="display-5 fw-bold mb-2">Propiedades Disponibles</h1>
           <p className="text-muted">Encuentra tu próximo hogar con nosotros</p>
-          <div className="bg-primary" style={{ height: '3px', width: '60px', borderRadius: '2px' }}></div>
+          <div className="bg-primary mt-2" style={{ height: '3px', width: '60px', borderRadius: '2px' }}></div>
         </div>
 
         {/* Botón visible SOLO en móviles (d-lg-none) */}
@@ -60,7 +60,7 @@ const Properties = () => {
           data-bs-toggle="collapse"
           data-bs-target="#mobileFilters"
         >
-          <i className="bi bi-funnel"></i> Filtros
+          <i class="bi bi-funnel"></i> Filtros
         </button>
       </div>
 
