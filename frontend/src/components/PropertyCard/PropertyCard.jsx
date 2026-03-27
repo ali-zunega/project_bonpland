@@ -1,14 +1,9 @@
 import React from "react";
+import PropertyInfo from "../PropertyInfo/PropertyInfo";
 
 const PropertyCard = ({ property, onClick }) => {
   const mainImage = property.images?.[0];
   const totalImages = property.images?.length || 0;
-
-  const formatPrice = (price) =>
-    new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-    }).format(price);
 
   // si esta destacada, agregar un borde amarillo a la tarjeta 
   return (
@@ -56,27 +51,12 @@ const PropertyCard = ({ property, onClick }) => {
       </div>
 
       <div className="card-body d-flex flex-column">
-        <div className="mb-2">
-          <span className={`badge text-uppercase badge-type ${property.type}`}>
-            {property.type === "sale" ? "Venta" : "Alquiler"}
-          </span>
-        </div>
+        <PropertyInfo
+          property={property}
+          variant="card"
+          showFeatured={false}
+        />
 
-        <h5 className="card-title fw-semibold text-dark">{property.title}</h5>
-
-        <p className="card-text text-muted mb-1">
-          <i className="bi bi-geo-alt-fill property-icon"></i> {property.city}, {property.country}
-        </p>
-
-        <p className="card-text fw-bold fs-5 mb-2 text-body">
-          {formatPrice(property.price)}
-        </p>
-
-        <p className="card-text text-muted small">
-          <i className="bi bi-door-open property-icon"></i> {property.rooms} amb · <i className="bi bi-aspect-ratio property-icon"></i> {property.area} m²
-        </p>
-
-        {/* El botón ahora es puramente visual ya que toda la card tiene el onClick */}
         <div className="mt-auto d-flex justify-content-end">
           <button className="btn btn-primary" style={{ pointerEvents: 'none' }}>
             Ver más

@@ -60,7 +60,7 @@ const Properties = () => {
           data-bs-toggle="collapse"
           data-bs-target="#mobileFilters"
         >
-          <i class="bi bi-funnel"></i> Filtros
+          <i className="bi bi-funnel"></i> Filtros
         </button>
       </div>
 

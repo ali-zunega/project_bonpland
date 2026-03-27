@@ -79,8 +79,8 @@
   backdrop-filter: blur(4px);
 }
 .badge-type {
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 /* Venta */
@@ -93,6 +93,11 @@
 .badge-type.rent {
   background-color: #0dcaf0; /* celeste tipo info */
   color: #000;
+  
+}
+
+.badge-soft {
+  border-radius: 6px; /* o 8px si te gusta más */
 }
 
 
@@ -119,20 +124,18 @@
   gap: 20px;
   font-weight: 500;
 }
-
-.property-features span {
+.property-features .feature-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-
-.property-features span:not(:last-child)::after {
+.property-features .feature-item:not(:last-child)::after {
   content: "•";
-  margin-left: 10px;
-  color: #ccc;
+  margin: 0 10px;
+  color: var(--brand-gold);
 }
-
 
 /* ========================
    HELPERS 
