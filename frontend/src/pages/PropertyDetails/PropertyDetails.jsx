@@ -8,18 +8,13 @@ const PropertyDetails = () => {
 
   const { id } = useParams();
 
-  const property = properties.find(
-    (p) => p.id === parseInt(id)
-  );
+  const property = properties.find((p) => p.id === parseInt(id));
 
-  const [selectedImage, setSelectedImage] = useState(
-    property?.images?.[0]
-  );
+  const [selectedImage, setSelectedImage] = useState(property?.images?.[0]);
 
   const handleContact = () => {
-
-    alert("¡Gracias por tu interés! Pronto nos pondremos en contacto contigo.");
-
+    navigate("/contact", { state: { property } });
+    window.scrollTo(0, 0);
   };
 
   // Si no se encuentra la propiedad, mostrar mensaje de error
@@ -38,11 +33,9 @@ const PropertyDetails = () => {
     );
   }
 
-
   return (
     <div className="container mt-4">
       <div className="row">
-
         {/* GALERÍA */}
         <div className="col-md-6">
           {/* Imagen principal */}
@@ -90,10 +83,7 @@ const PropertyDetails = () => {
 
             {/* BOTONES */}
             <div className="d-flex gap-2 mt-3">
-              <button
-                className="btn btn-brand"
-                onClick={handleContact}
-              >
+              <button className="btn btn-brand" onClick={handleContact}>
                 Me interesa esta propiedad
               </button>
 
@@ -106,7 +96,6 @@ const PropertyDetails = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -10,181 +10,190 @@
     "rooms": 4,
     "status": "available",
     "type": "sale",
-    "images": ["/Media/foto1.jpeg","/Media/foto18.jpg"],
+    "images": [
+      "/Media/foto1.jpeg",
+      "/Media/foto18.jpg"
+    ],
     "featured": true
-    },
-    {
-      "id": 2,
-      "title": "Departamento en Buenos Aires",
-      "description": "Ubicación céntrica",
-      "country": "Argentina",
-      "city": "Buenos Aires",
-      "price": 80000,
-      "area": 60,
-      "rooms": 2,
-      "status": "reserved",
-      "type": "sale",
-      "images": [
-        "/Media/foto2.jpeg"
-      ],
-      "featured": true
-    },
-    {
-      "id": 3,
-      "title": "Casa de Verano en Mar del Plata",
-      "description": "A tres cuadras de la playa, con jardín y parrilla.",
-      "country": "Argentina",
-      "city": "Mar del Plata",
-      "price": 150000,
-      "area": 120,
-      "rooms": 4,
-      "status": "available",
-      "type": "sale",
-      "images": [
-        "/Media/foto3.jpg"
-      ],
-      "featured": false
-    },
-    {
-      "id": 4,
-      "title": "Penthouse con Vista al Río",
-      "description": "Vistas panorámicas y terminaciones de lujo.",
-      "country": "Argentina",
-      "city": "Rosario",
-      "price": 210000,
-      "area": 95,
-      "rooms": 3,
-      "status": "sold",
-      "type": "sale",
-      "images": [
-        "/Media/foto4.jpg"
-      ],
-      "featured": true
-    },
-    {
-      "id": 5,
-      "title": "Monoambiente en Nueva Córdoba",
-      "description": "Cerca de la zona universitaria, excelente rentabilidad.",
-      "country": "Argentina",
-      "city": "Córdoba",
-      "price": 55000,
-      "area": 32,
-      "rooms": 1,
-      "status": "available",
-      "type": "sale",
-      "images": [
-        "/Media/foto5.jpg"
-      ],
-      "featured": false
-    },
-    {
-      "id": 6,
-      "title": "Cabaña en Bariloche",
-      "description": "Rodeada de pinos con vista a las montañas.",
-      "country": "Argentina",
-      "city": "Bariloche",
-      "price": 175000,
-      "area": 85,
-      "rooms": 3,
-      "status": "available",
-      "type": "sale",
-      "images": [
-        "/Media/foto6.jpg"
-      ],
-      "featured": false
-    },
-    {
-      "id": 7,
-      "title": "Departamento en Pocitos",
-      "description": "Excelente zona residencial cerca de la rambla.",
-      "country": "Uruguay",
-      "city": "Montevideo",
-      "price": 190000,
-      "area": 70,
-      "rooms": 2,
-      "status": "available",
-      "type": "sale",
-      "images": ["/Media/foto7.jpg","/Media/foto19.jpg"],
-      "featured": false
-      },
-      {
-        "id": 8,
-        "title": "Dúplex en Mendoza",
-        "description": "Zona de bodegas, entorno muy tranquilo.",
-        "country": "Argentina",
-        "city": "Mendoza",
-        "price": 115000,
-        "area": 110,
-        "rooms": 3,
-        "status": "reserved",
-        "type": "sale",
-        "images": [
-          "/Media/foto8.jpg","/Media/foto13.jpg"
-        ],
-        "featured": true
-      },
-      {
-        "id": 9,
-        "title": "Oficina Céntrica",
-        "description": "Ideal para estudio jurídico o contable.",
-        "country": "Argentina",
-        "city": "Tucumán",
-        "price": 45000,
-        "area": 40,
-        "rooms": 2,
-        "status": "available",
-        "type": "sale",
-        "images": [
-          "/Media/foto9.jpg"
-        ],
-        "featured": false
-      },
-      {
-        "id": 10,
-        "title": "Piso Exclusivo en Recoleta",
-        "description": "Edificio francés de época totalmente reciclado.",
-        "country": "Argentina",
-        "city": "Buenos Aires",
-        "price": 420000,
-        "area": 180,
-        "rooms": 5,
-        "status": "available",
-        "type": "sale",
-        "images": [
-          "/Media/foto10.jpg"
-        ],
-        "featured": false
-      },
-      {
-        "id": 11,
-        "title": "Moderno Loft en Palermo",
-        "description": "Estilo industrial con techos altos y mucha luz natural.",
-        "country": "Argentina",
-        "city": "Buenos Aires",
-        "price": 125000,
-        "area": 45,
-        "rooms": 1,
-        "status": "available",
-        "type": "sale",
-        "images": [
-          "/Media/foto11.jpg","/Media/foto14.jpg"
-        ],
-        "featured": false
-      },
-      {
-        "id": 12,
-        "title": "Departamento en Buenos Aires",
-        "description": "Ubicación céntrica, ideal para inversión.",
-        "country": "Argentina",
-        "city": "Buenos Aires",
-        "price": 80000,
-        "area": 60,
-        "rooms": 2,
-        "status": "reserved",
-        "type": "sale",
-        "images": [
-          "/Media/foto12.jpeg", "/Media/foto15.jpg"
-        ],
-        "featured": false
-      }
-    ]
+  },
+  {
+    "id": 2,
+    "title": "Departamento en Buenos Aires",
+    "description": "Ubicación céntrica",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "price": 80000,
+    "area": 60,
+    "rooms": 2,
+    "status": "reserved",
+    "type": "sale",
+    "images": [
+      "/Media/foto2.jpeg"
+    ],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Casa de Verano en Mar del Plata",
+    "description": "A tres cuadras de la playa, con jardín y parrilla.",
+    "country": "Argentina",
+    "city": "Mar del Plata",
+    "price": 150000,
+    "area": 120,
+    "rooms": 4,
+    "status": "available",
+    "type": "sale",
+    "images": [
+      "/Media/foto3.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Penthouse con Vista al Río",
+    "description": "Vistas panorámicas y terminaciones de lujo.",
+    "country": "Argentina",
+    "city": "Rosario",
+    "price": 210000,
+    "area": 95,
+    "rooms": 3,
+    "status": "sold",
+    "type": "sale",
+    "images": [
+      "/Media/foto4.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "Monoambiente en Nueva Córdoba",
+    "description": "Cerca de la zona universitaria, excelente rentabilidad.",
+    "country": "Argentina",
+    "city": "Córdoba",
+    "price": 55000,
+    "area": 32,
+    "rooms": 1,
+    "status": "available",
+    "type": "rent",
+    "images": [
+      "/Media/foto5.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Cabaña en Bariloche",
+    "description": "Rodeada de pinos con vista a las montañas.",
+    "country": "Argentina",
+    "city": "Bariloche",
+    "price": 175000,
+    "area": 85,
+    "rooms": 3,
+    "status": "available",
+    "type": "sale",
+    "images": [
+      "/Media/foto6.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "Departamento en Pocitos",
+    "description": "Excelente zona residencial cerca de la rambla.",
+    "country": "Uruguay",
+    "city": "Montevideo",
+    "price": 190000,
+    "area": 70,
+    "rooms": 2,
+    "status": "available",
+    "type": "rent",
+    "images": [
+      "/Media/foto7.jpg",
+      "/Media/foto19.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Dúplex en Mendoza",
+    "description": "Zona de bodegas, entorno muy tranquilo.",
+    "country": "Argentina",
+    "city": "Mendoza",
+    "price": 115000,
+    "area": 110,
+    "rooms": 3,
+    "status": "reserved",
+    "type": "sale",
+    "images": [
+      "/Media/foto8.jpg",
+      "/Media/foto13.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": 9,
+    "title": "Oficina Céntrica",
+    "description": "Ideal para estudio jurídico o contable.",
+    "country": "Argentina",
+    "city": "Tucumán",
+    "price": 45000,
+    "area": 40,
+    "rooms": 2,
+    "status": "available",
+    "type": "sale",
+    "images": [
+      "/Media/foto9.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Piso Exclusivo en Recoleta",
+    "description": "Edificio francés de época totalmente reciclado.",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "price": 420000,
+    "area": 180,
+    "rooms": 5,
+    "status": "available",
+    "type": "rent",
+    "images": [
+      "/Media/foto10.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "Moderno Loft en Palermo",
+    "description": "Estilo industrial con techos altos y mucha luz natural.",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "price": 125000,
+    "area": 45,
+    "rooms": 1,
+    "status": "available",
+    "type": "sale",
+    "images": [
+      "/Media/foto11.jpg",
+      "/Media/foto14.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": 12,
+    "title": "Departamento en Buenos Aires",
+    "description": "Ubicación céntrica, ideal para inversión.",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "price": 80000,
+    "area": 60,
+    "rooms": 2,
+    "status": "reserved",
+    "type": "sale",
+    "images": [
+      "/Media/foto12.jpeg",
+      "/Media/foto15.jpg"
+    ],
+    "featured": false
+  }
+]
