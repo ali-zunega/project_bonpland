@@ -75,12 +75,13 @@ const Properties = () => {
 
         {/* Botón visible SOLO en móviles (d-lg-none) */}
         <button
-          className="btn btn-outline-primary d-lg-none"
+          className="btn btn-outline-primary d-flex align-items-center gap-2 d-lg-none shadow-sm"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mobileFilters"
         >
-          <i className="bi bi-funnel"></i> Filtros
+          <i className="bi bi-funnel fs-6"></i>
+          <span className="d-none d-sm-inline">Filtros</span>
         </button>
       </div>
 
