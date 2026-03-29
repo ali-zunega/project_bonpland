@@ -13,8 +13,12 @@ const PropertyDetails = () => {
   const [selectedImage, setSelectedImage] = useState(property?.images?.[0]);
 
   const handleContact = () => {
-    navigate("/contact", { state: { property } });
-    window.scrollTo(0, 0);
+    navigate("/contact", {
+      state: {
+        property,
+        scrollToForm: true,
+      },
+    });
   };
 
   // Si no se encuentra la propiedad, mostrar mensaje de error

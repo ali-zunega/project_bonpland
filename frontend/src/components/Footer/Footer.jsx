@@ -5,12 +5,10 @@ import logo from "../../assets/logo.jpeg";
 const Footer = () => {
   return (
     <footer className="footer-custom text-center py-3 mt-4">
-      <div className="container d-flex flex-column align-items-center gap-3">
-
+      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
         {/* Logo */}
-        <Link to="/" className="d-flex align-items-center gap-2 text-decoration-none">
+        <Link to="/" className="d-flex align-items-center text-decoration-none">
           <img src={logo} alt="Logo Bonpland" style={{ height: "40px" }} />
-          {/* <span className="fw-bold text-dark">Bonpland Propiedades</span> */}
         </Link>
 
         {/* Texto */}
@@ -21,7 +19,6 @@ const Footer = () => {
         <p className="mb-0 text-muted small">
           Desarrollado por <strong>#idea5</strong>
         </p>
-
       </div>
     </footer>
   );
