@@ -1,27 +1,27 @@
-import React from 'react';
-import FeaturedPropertiesCarousel from '../../components/FeaturedProperties/FeaturedPropertiesCarousel';
+import React from "react";
+import FeaturedPropertiesCarousel from "../../components/FeaturedProperties/FeaturedPropertiesCarousel";
 
-import properties from '../../data/properties.json'; 
+import properties from "../../data/properties.json";
 
 const Home = () => {
   return (
-    <main>
-      <section className="hero">
-        <h1 className="text-center">Encuentra tu hogar ideal</h1>
+    <>
+      <section className="hero d-flex align-items-center justify-content-center mt-3">
+        <h1 className="text-center fw-bold">Encuentra tu hogar ideal</h1>
       </section>
 
-      <section className="py-3 bg-light">
-        <div className="container">
-          <h2 className="text-center mb-4">Propiedades Destacadas</h2>
-          
-          {/* Aquí insertas el componente */}
+      <section className="bg-light">
+        <div className="container justify-content-center align-items-center d-flex flex-column">
+          <h2 className="text-center mb-3">Propiedades Destacadas</h2>
+          <div
+            className="bg-primary mb-2"
+            style={{ height: "3px", width: "80px", borderRadius: "2px" }}
+          ></div>
+
           <FeaturedPropertiesCarousel properties={properties} />
-          
         </div>
       </section>
-
-      {/* Luego agregar boton de "Ver todas las propiedades" */}
-    </main>
+    </>
   );
 };
 
