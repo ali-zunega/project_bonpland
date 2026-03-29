@@ -13,13 +13,18 @@ const ContactForm = ({ property }) => {
   } = useContactForm(property);
 
   return (
-    <div className="contact-form p-4 shadow-sm rounded w-75 mx-auto">
-      <h3 className="mb-3">{title}</h3>
+    <div className="contact-form p-4 shadow-sm rounded w-100 w-lg-75 mx-auto">
+      <h3 className="mb-3 fw-bold">{title}</h3>
 
       {/*si viene del boton en PropertyDetails - info de propiedad */}
       {property && (
         <div className="alert alert-info">
-          <strong>{property?.title}</strong> (#{property?.reference})
+          <div>
+            <strong>Propiedad:</strong> {property?.title}
+          </div>
+          <div>
+            <strong>Referencia:</strong> #{property?.reference}
+          </div>
         </div>
       )}
 
@@ -30,6 +35,11 @@ const ContactForm = ({ property }) => {
           <span>Tu consulta fue enviada correctamente</span>
         </div>
       )}
+      <p className="text-muted">
+        {property
+          ? "Consultá por esta propiedad y te responderemos a la brevedad."
+          : "Completá el formulario y nos pondremos en contacto con vos."}
+      </p>
 
       {/* Formulario */}
       <form onSubmit={handleSubmit}>
