@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import normalizeText from "../../utils/normalizeText";
+import { useRef } from "react";
+import * as bootstrap from "bootstrap";
 import propertiesData from "../../data/properties.json"; // Renombrado para evitar confusión
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import PropertyFilters from "../../components/PropertyFilters/PropertyFilters";
 
 const Properties = () => {
+  const filtersRef = useRef(null);
   const navigate = useNavigate();
   // Calculamos el precio máximo real de tus datos
   const maxPriceInData = Math.max(...propertiesData.map((p) => p.price), 0);
@@ -25,12 +29,12 @@ const Properties = () => {
       // 2. Filtro por País (case insensitive)
       const matchesCountry =
         filters.country === "" ||
-        prop.country.toLowerCase().includes(filters.country.toLowerCase());
+        normalizeText(prop.country).includes(normalizeText(filters.country));
 
       // 3. Filtro por Ciudad
       const matchesCity =
         filters.city === "" ||
-        prop.city.toLowerCase().includes(filters.city.toLowerCase());
+        normalizeText(prop.city).includes(normalizeText(filters.city));
 
       // 4. Filtro por Metros Cuadrados
       const matchesMinSqM =
@@ -45,6 +49,7 @@ const Properties = () => {
       const matchesType =
         filters.type === "" ||
         prop.type.toLowerCase() === filters.type.toLowerCase();
+      console.log(prop.type);
 
       // Solo si cumple todas las condiciones
       return (
@@ -59,6 +64,19 @@ const Properties = () => {
     });
 
     setFilteredProperties(results);
+    closeFilters();
+  };
+
+  const closeFilters = () => {
+    const el = filtersRef.current;
+
+    if (el && window.innerWidth < 992) {
+      const bsCollapse =
+        bootstrap.Collapse.getInstance(el) ||
+        new bootstrap.Collapse(el, { toggle: false });
+
+      bsCollapse.hide();
+    }
   };
 
   return (
@@ -93,6 +111,7 @@ const Properties = () => {
             className="collapse d-lg-block sticky-lg-top"
             id="mobileFilters"
             style={{ top: "20px" }}
+            ref={filtersRef}
           >
             <PropertyFilters
               key={maxPriceInData}
@@ -105,6 +124,11 @@ const Properties = () => {
 
         {/* grid propiedades a la derecha */}
         <div className="col-12 col-lg-9">
+          <p className="text-muted mb-3">
+            {filteredProperties.length === 1
+              ? "1 propiedad encontrada"
+              : `${filteredProperties.length} propiedades encontradas`}
+          </p>
           <div className="row g-4">
             {filteredProperties.length > 0 ? (
               filteredProperties.map((property) => (
