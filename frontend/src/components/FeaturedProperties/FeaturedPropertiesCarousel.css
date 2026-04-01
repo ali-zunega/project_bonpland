@@ -1,11 +1,36 @@
 #featuredCarousel {
-  padding: 0 80px; /* Creamos un "pasillo" para las flechas */
+  padding: 0 80px;
+  /* Creamos un "pasillo" para las flechas */
 }
 
 .carousel-control-prev {
-  left: 0; /* La flecha ahora vive en el pasillo izquierdo */
+  left: 0;
+  /* La flecha ahora vive en el pasillo izquierdo */
 }
 
 .carousel-control-next {
-  right: 0; /* La flecha ahora vive en el pasillo derecho */
+  right: 0;
+  /* La flecha ahora vive en el pasillo derecho */
+}
+
+@media (max-width: 460px) {
+  #featuredCarousel {
+    padding: 0 15px;
+  }
+
+  .carousel-inner {
+    padding: 0 10px;
+  }
+
+  .carousel-item {
+    padding: 10px 0;
+  }
+
+  span.carousel-control-prev-icon,
+  span.carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+
 }

@@ -1,14 +1,27 @@
 import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import ContactForm from "../../components/ContactForm/ContactForm";
 
 const Contact = () => {
   const location = useLocation();
   const property = location.state?.property;
 
+  // Si viene del botón "Contactar" en PropertyDetails
+  // hacemos scroll automático al formulario
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (location.state?.scrollToForm && formRef.current) {
+      setTimeout(() => {
+        formRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location.state]);
+
   return (
     <div className="container bg-light rounded">
       <div className="row">
-        {/* Info */}
+        {/* Info  hardcodeada -  podria venir de bachend si se implementa */}
         <div className="col-12 col-lg-5 mb-4 pe-lg-4 p-3 p-lg-4">
           <h3 className="mb-3 fw-bold">Donde encontrarnos</h3>
           <p className="mb-2">
@@ -35,7 +48,11 @@ const Contact = () => {
         </div>
 
         {/* Formulario */}
-        <div className="col-12 col-lg-7">
+        <div
+          className="col-12 col-lg-7"
+          style={{ scrollMarginTop: "80px" }}
+          ref={formRef}
+        >
           <ContactForm property={property} />
         </div>
       </div>
