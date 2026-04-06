@@ -43,8 +43,7 @@ const Login = () => {
         const userFound = users.find(
             (user) =>
                 user.email === formData.email &&
-                user.password === formData.password &&
-                user.role === formData.role
+                user.password === formData.password
         );
 
         localStorage.setItem("user", JSON.stringify(userFound));
@@ -79,24 +78,6 @@ const Login = () => {
                     <h2 className="text-center mb-4">Bienvenido a Bonpland Propiedades</h2>
 
                     <form onSubmit={handleSubmit}>
-
-                        <div className="mb-3">
-                            <label className="form-label">Ingresar como</label>
-
-
-                            <select
-                                name="role"
-                                className="form-select"
-                                value={formData.role}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="">Seleccionar rol</option>
-                                <option value="admin">Administrador</option>
-                                <option value="user">Usuario</option>
-                            </select>
-                        </div>
-
 
                         <div className="mb-3">
                             <label>Email</label>
