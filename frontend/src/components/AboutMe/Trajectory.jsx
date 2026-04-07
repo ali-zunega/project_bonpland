@@ -22,7 +22,7 @@ export function Trajectory() {
 
   return (
     <section className="container my-5 timeline-section">
-      <h2 className="text-center mb-5 fw-bold">Nuestra Trayectoria</h2>
+      <h3 className="text-center mb-5 fw-bold">Nuestra Trayectoria</h3>
 
       {/* Contenedor principal relativo */}
       <div className="position-relative pb-5">
