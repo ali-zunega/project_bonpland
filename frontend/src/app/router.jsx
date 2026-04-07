@@ -13,6 +13,8 @@ import AdminLayout from "../admin/Layout/AdminLayout";
 import Dashboard from "../admin/Dashboard/Dashboard";
 import PropertyList from "../admin/PropertyList/PropertyList";
 import PropertyForm from "../admin/PropertyForm/PropertyForm";
+import PrivateRoute from "../app/PrivateRoute";
+
 
 export default function AppRouter() {
     return (
@@ -28,7 +30,15 @@ export default function AppRouter() {
             <Route path="/properties/:id" element={<PropertyDetails />} />
 
             {/* Rutas admin */}
-            <Route path="admin" element={<AdminLayout />} >
+
+            <Route
+                path="admin"
+                element={
+                    <PrivateRoute allowedRoles={["admin"]}>
+                        <AdminLayout />
+                    </PrivateRoute>
+                }
+            >
                 <Route index element={<Dashboard />} />
                 <Route path="properties" element={<PropertyList />} />
                 <Route path="properties/new" element={<PropertyForm />} />
