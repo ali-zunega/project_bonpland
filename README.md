@@ -145,7 +145,6 @@ Responsable de:
 - **[Alicia Zuñega]** - [@ali-zunega](https://github.com/ali-zunega) - _Frontend Developer_
 - **[Rodrigo Alonzo Ojeda]** - [@RodrigoPrograma](https://github.com/rodrigoprograma) - _Frontend Developer_
 - **[Anthony Bañon Arias]** - [@anthonybanion](https://github.com/anthonybanion) - _Backend Developer_
-- **[Pablo Defelitto]** - [@Pilo28](https://github.com/Pilo28) - _Project Manager (Software)_
 - **[Matias Fandiño]** - [@matifandy8](https://github.com/matifandy8) - _Fullstack Developer_
 - **[Ricardo Basten Covarrubias]** - [@ricardobasten](https://github.com/ricardobasten) - _UI/UX Designer_
 
@@ -215,7 +214,7 @@ Backend API: <!-- Link al deploy backend / api  -->
 
 # 🗺️ Roadmap
 
-- [ ] Setup inicial del proyecto
+- [x] Setup inicial del proyecto
 - [ ] Diseño de UI
 - [ ] Desarrollo del frontend
 - [ ] Desarrollo del backend
