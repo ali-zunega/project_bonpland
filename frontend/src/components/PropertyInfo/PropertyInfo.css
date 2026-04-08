@@ -1,0 +1,46 @@
+.property-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+/* TÍTULO */
+.property-title {
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    height: 2.4em;
+}
+
+/* UBICACIÓN */
+.property-location {
+    font-size: 0.9rem;
+    color: #6c757d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* PRECIO */
+.property-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-height: 1.5em;
+}
+
+/* FEATURES */
+.property-features {
+    display: flex;
+    gap: 12px;
+    font-weight: 500;
+
+    min-height: 24px;
+    align-items: center;
+}

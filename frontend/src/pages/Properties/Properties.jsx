@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Properties.css";
 import normalizeText from "../../utils/normalizeText";
 import { useRef } from "react";
 import * as bootstrap from "bootstrap";
@@ -153,7 +154,10 @@ const Properties = () => {
           <div className="row g-4">
             {filteredProperties.length > 0 ? (
               filteredProperties.map((property) => (
-                <div key={property.id} className="col-12 col-sm-6 col-xl-4">
+                <div
+                  key={property.id}
+                  className="col-12 col-sm-6 col-lg-4 d-flex"
+                >
                   <PropertyCard
                     property={property}
                     onClick={() => navigate(`/properties/${property.id}`)}

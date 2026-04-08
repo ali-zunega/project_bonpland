@@ -1,7 +1,19 @@
 /* ========================
-   BOTONES (branding propio)
+   VARIABLES 
 ======================== */
+:root {
+  --brand-gold: #d4a75c;
+  --brand-black: #1a1a1a;
+}
 
+.row {
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+}
+
+/* ========================
+   BOTONES
+======================== */
 .btn-brand {
   background-color: var(--brand-gold);
   border-color: var(--brand-gold);
@@ -11,10 +23,8 @@
 .btn-brand:hover {
   background-color: #d9a85f;
   border-color: #d9a85f;
-  color: var(--brand-black);
 }
 
-/* Variante oscura */
 .btn-brand-solid {
   background-color: var(--brand-black);
   color: var(--brand-gold);
@@ -25,22 +35,18 @@
   opacity: 1;
 }
 
-
 /* ========================
-   TIPOGRAFÍA
+   TIPOGRAFÍA GLOBAL
 ======================== */
-
 .section-title {
   font-size: 20px;
   font-weight: 600;
   color: var(--brand-black);
 }
 
-
 /* ========================
-   CARDS
+   CARDS (GENÉRICO)
 ======================== */
-
 .card-featured {
   border: 2px solid var(--brand-gold);
 }
@@ -49,21 +55,9 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.property-card {
-  transition: all 0.3s ease;
-}
-
-.property-card:hover {
-  transform: translateY(-5px);
-}
-
-
-
-
 /* ========================
    BADGES
 ======================== */
-
 .badge-featured {
   background-color: var(--brand-gold);
   color: var(--brand-black);
@@ -78,68 +72,23 @@
   font-size: 0.85rem;
   backdrop-filter: blur(4px);
 }
-.badge-type {
-  font-size: 0.75rem;
-  font-weight: bold;
-}
 
-/* Venta */
 .badge-type.sale {
-  background-color: #198754; /* verde tipo success */
+  background-color: #198754;
   color: white;
 }
 
-/* Alquiler */
 .badge-type.rent {
-  background-color: #0dcaf0; /* celeste tipo info */
+  background-color: #0dcaf0;
   color: #000;
-  
 }
-
-.badge-soft {
-  border-radius: 6px; /* o 8px si te gusta más */
-}
-
-
 
 /* ========================
-   ICONS 
+   ICONS / HELPERS
 ======================== */
-
-.featured-icon {
-  color: white;
-}
-
 .property-icon {
   color: var(--brand-gold);
-  font-size: 1rem;
 }
-
-.property-info {
-  background-color: #fff;
-}
-
-.property-features {
-  display: flex;
-  gap: 20px;
-  font-weight: 500;
-}
-.property-features .feature-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
-}
-
-.property-features .feature-item:not(:last-child)::after {
-  content: "•";
-  margin: 0 10px;
-  color: var(--brand-gold);
-}
-
-/* ========================
-   HELPERS 
-======================== */
 
 .bg-brand {
   background-color: var(--brand-gold);
@@ -149,11 +98,9 @@
   color: var(--brand-gold);
 }
 
-
 /* ========================
-   LAYOUT FIXES
+   LAYOUT HELPERS
 ======================== */
-
 .sticky-offset {
   position: sticky;
   top: 90px;
