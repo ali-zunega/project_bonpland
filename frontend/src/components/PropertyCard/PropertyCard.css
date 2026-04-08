@@ -1,6 +1,27 @@
-@media (max-width: 360px) {
-    .property-card {
-        max-width: 280px;
-        margin: 0 auto;
-    }
+.property-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s ease;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.property-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Imagen consistente */
+.property-card img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Empuja botón abajo */
+.property-card .mt-auto {
+    margin-top: auto !important;
 }

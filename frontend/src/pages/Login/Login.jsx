@@ -67,48 +67,50 @@ const Login = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center vh-100">
-        <div className="card p-4 shadow" style={{ width: "400px" }}>
-          <Link
-            to="/"
-            className="d-flex justify-content-center align-items-center mb-3"
-          >
-            <img src={logo} alt="Logo" style={{ height: "60px" }} />
-            {/* <span className="fw-bold">Bonpland Propiedades</span> */}
-          </Link>
-          {/* <h2 className="text-center mb-4">Bienvenido a Bonpland Propiedades</h2> */}
+      <div className="container-fluid">
+        <div className="row min-vh-90 pt-4 align-items-center justify-content-center">
+          <div className="col-12 col-sm-10 col-md-6 col-lg-4">
+            <div className="card shadow p-4">
+              <Link to="/" className="d-flex justify-content-center mb-3">
+                <img src={logo} alt="Logo" style={{ height: "60px" }} />
+              </Link>
+              <span className="mb-4 align-self-center">
+                Bienvenidos a Bonpland
+              </span>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                {error && <p className="text-danger">{error}</p>}
+
+                <button type="submit" className="btn btn-primary w-100">
+                  Ingresar
+                </button>
+              </form>
             </div>
-
-            <div className="mb-3">
-              <label>Contraseña</label>
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            {error && <p className="text-danger">{error}</p>}
-
-            <button type="submit" className="btn btn-primary w-100">
-              Ingresar
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </>
