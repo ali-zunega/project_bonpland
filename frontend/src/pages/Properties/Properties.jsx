@@ -14,6 +14,23 @@ const Properties = () => {
   const maxPriceInData = Math.max(...propertiesData.map((p) => p.price), 0);
   const minPriceInData = Math.min(...propertiesData.map((p) => p.price), 0);
 
+  // manejo cierre del toggle de filtros
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+
+  const handleToggleFilters = () => {
+    const el = filtersRef.current;
+    if (!el) return;
+
+    let bsCollapse = bootstrap.Collapse.getInstance(el);
+
+    if (!bsCollapse) {
+      bsCollapse = new bootstrap.Collapse(el, { toggle: false });
+    }
+
+    bsCollapse.toggle();
+    setIsFiltersOpen((prev) => !prev);
+  };
+
   // Estado para las propiedades que se muestran en pantalla
   const [filteredProperties, setFilteredProperties] = useState(propertiesData);
 
@@ -49,7 +66,7 @@ const Properties = () => {
       const matchesType =
         filters.type === "" ||
         prop.type.toLowerCase() === filters.type.toLowerCase();
-      console.log(prop.type);
+      // console.log(prop.type);
 
       // Solo si cumple todas las condiciones
       return (
@@ -66,7 +83,7 @@ const Properties = () => {
     setFilteredProperties(results);
     closeFilters();
   };
-
+  // cierra filtros al apretar buscar
   const closeFilters = () => {
     const el = filtersRef.current;
 
@@ -77,6 +94,8 @@ const Properties = () => {
 
       bsCollapse.hide();
     }
+
+    setIsFiltersOpen(false); // 🔥 esto es clave
   };
 
   return (
@@ -85,6 +104,7 @@ const Properties = () => {
         <div className="d-flex flex-column align-items-center w-100 py-2">
           <h2 className="fw-bold mb-2">Propiedades Disponibles</h2>
           <p className="text-muted">Encuentra tu próximo hogar con nosotros</p>
+          {/* este div es la linea  */}
           <div
             className="bg-primary mt-2"
             style={{ height: "3px", width: "80px", borderRadius: "2px" }}
@@ -95,11 +115,12 @@ const Properties = () => {
         <button
           className="btn btn-outline-primary d-flex align-items-center gap-2 d-lg-none shadow-sm"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mobileFilters"
+          onClick={handleToggleFilters}
         >
-          <i className="bi bi-funnel fs-6"></i>
-          <span className="d-none d-sm-inline">Filtros</span>
+          <i className={`bi ${isFiltersOpen ? "bi-x-lg" : "bi-sliders2"}`}></i>
+          {/* <span className="d-none d-sm-inline">
+            {isFiltersOpen ? "Cerrar" : "Filtros"}
+          </span> */}
         </button>
       </div>
 

@@ -50,7 +50,6 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
       onSubmit={handleSubmit}
     >
       <div className="d-flex align-items-center mb-3 text-primary">
-        <i className="bi bi-sliders2 me-2"></i>
         <h5 className="m-0 fw-bold">Filtrar búsqueda</h5>
       </div>
 
