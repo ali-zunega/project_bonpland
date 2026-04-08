@@ -1,0 +1,16 @@
+{
+    "title": "",
+    "description": "",
+    "rooms": "",
+    "square_meters": "",
+    "price": "",
+    "operation_type": "",
+    "status": "available",
+    "type": "",
+    "address": "",
+    "city_id": "",
+    "company_id": 1,
+    "featured": false,
+    "published": true,
+    "reference_code": ""
+}

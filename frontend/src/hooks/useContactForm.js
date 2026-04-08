@@ -1,91 +1,129 @@
 import { useState } from "react";
+import { isValidEmail, isEmpty } from "../utils/validation";
 
 const useContactForm = (property) => {
   const isPropertyContact = !!property;
 
-  // setea el formulario con un mensaje predefinido si viene de PropertyDetails, sino vacío
+  // Helpers
+  const getDefaultMessage = () => {
+    if (!property) return "";
+    return `Hola, me interesa la propiedad ${property?.reference} (${property?.title}).`;
+  };
+
+  const getReasonFromProperty = () => {
+    if (!property) return null;
+    return property.type === "sale" ? "buy" : "rent";
+  };
+
+  // State
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     reason: "",
-    message: property
-      ? `Hola, me interesa la propiedad ${property?.reference} (${property?.title}).`
-      : "",
+    message: getDefaultMessage(),
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // Si la consulta viene de una propiedad,
-  // el motivo se setea automáticamente según el tipo de propiedad
-  const reason = property
-    ? property.type === "sale"
-      ? "buy"
-      : "rent"
-    : formData.reason;
+  //  Derived values
+  const reason = isPropertyContact ? getReasonFromProperty() : formData.reason;
 
   const title = isPropertyContact ? "Consulta por propiedad" : "Contacto";
 
+  //  Handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // evitar que se modifique el reason si viene de property
-    if (property && name === "reason") return;
+    // evitar modificar reason si viene de property
+    if (isPropertyContact && name === "reason") return;
 
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    // limpiar error del campo en tiempo real
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
-  // Validación simple,
-  // solo verifica que los campos requeridos no estén vacíos
+  //  Validación
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "El nombre es obligatorio";
-    if (!formData.email.trim()) newErrors.email = "El email es obligatorio";
-    if (!formData.message.trim())
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+    const phone = formData.phone.trim();
+
+    // Nombre
+    if (isEmpty(name)) {
+      newErrors.name = "El nombre es obligatorio";
+    }
+
+    // Email
+    if (isEmpty(email)) {
+      newErrors.email = "El email es obligatorio";
+    } else if (!isValidEmail(email)) {
+      newErrors.email = "El email no es válido";
+    }
+
+    // Mensaje
+    if (isEmpty(message)) {
       newErrors.message = "El mensaje es obligatorio";
+    } else if (message.length < 10) {
+      newErrors.message = "Debe tener al menos 10 caracteres";
+    }
+
+    // Motivo (solo si no viene de propiedad)
+    if (!isPropertyContact && isEmpty(formData.reason)) {
+      newErrors.reason = "Seleccioná un motivo";
+    }
+
+    // Teléfono (opcional)
+    if (phone && phone.length < 6) {
+      newErrors.phone = "Teléfono inválido";
+    }
 
     return newErrors;
   };
 
+  //  Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const validationErrors = validate();
+    setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    // Aquí se construiría el payload a enviar al backend
+    if (Object.keys(validationErrors).length > 0) return;
+
+    //  Payload
     const payload = {
       ...formData,
       propertyId: property?.id || null,
       propertyReference: property?.reference || null,
       phone: formData.phone || null,
-      reason: property
-        ? property.type === "sale"
-          ? "buy"
-          : "rent"
-        : formData.reason,
+      reason: reason,
     };
 
     console.log("Mensaje a enviar:", payload);
 
-    // simulación de envío con retraso
+    //  Simulación de envío
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
 
+      // ocultar mensaje de éxito
       setTimeout(() => setSuccess(false), 5000);
-      // reseteo de formulario
+
+      // reset form
       setFormData({
         name: "",
         email: "",
