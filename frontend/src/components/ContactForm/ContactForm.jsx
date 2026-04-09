@@ -16,7 +16,7 @@ const ContactForm = ({ property }) => {
     <div className="contact-form p-4 shadow-sm rounded w-100 w-lg-75 mx-auto">
       <h3 className="mb-3 fw-bold">{title}</h3>
 
-      {/*si viene del boton en PropertyDetails - info de propiedad */}
+      {/* Info propiedad */}
       {property && (
         <div className="alert alert-info">
           <div>
@@ -28,20 +28,20 @@ const ContactForm = ({ property }) => {
         </div>
       )}
 
-      {/* Mensaje de éxito */}
+      {/* Éxito */}
       {success && (
         <div className="alert alert-success d-flex align-items-center gap-2">
           <i className="bi bi-check-circle-fill"></i>
           <span>Tu consulta fue enviada correctamente</span>
         </div>
       )}
+
       <p className="text-muted">
         {property
           ? "Consultá por esta propiedad y te responderemos a la brevedad."
           : "Completá el formulario y nos pondremos en contacto con vos."}
       </p>
 
-      {/* Formulario */}
       <form onSubmit={handleSubmit}>
         {/* Nombre */}
         <div className="mb-3">
@@ -49,6 +49,7 @@ const ContactForm = ({ property }) => {
           <input
             type="text"
             name="name"
+            autoComplete="name"
             className={`form-control ${errors.name ? "is-invalid" : ""}`}
             value={formData.name}
             onChange={handleChange}
@@ -62,6 +63,7 @@ const ContactForm = ({ property }) => {
           <input
             type="email"
             name="email"
+            autoComplete="email"
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
             value={formData.email}
             onChange={handleChange}
@@ -70,23 +72,29 @@ const ContactForm = ({ property }) => {
             <div className="invalid-feedback">{errors.email}</div>
           )}
         </div>
+
         {/* Teléfono */}
         <div className="mb-3">
           <label className="form-label">Teléfono (opcional)</label>
           <input
             type="tel"
             name="phone"
-            className="form-control"
+            autoComplete="tel"
+            className={`form-control ${errors.phone ? "is-invalid" : ""}`}
             value={formData.phone}
             onChange={handleChange}
           />
+          {errors.phone && (
+            <div className="invalid-feedback">{errors.phone}</div>
+          )}
         </div>
+
         {/* Motivo */}
         <div className="mb-3">
           <label className="form-label">Motivo de contacto</label>
           <select
             name="reason"
-            className="form-select"
+            className={`form-select ${errors.reason ? "is-invalid" : ""}`}
             value={reason}
             onChange={handleChange}
             disabled={!!property}
@@ -96,6 +104,10 @@ const ContactForm = ({ property }) => {
             <option value="sell">Vender</option>
             <option value="rent">Alquilar</option>
           </select>
+
+          {errors.reason && (
+            <div className="invalid-feedback">{errors.reason}</div>
+          )}
         </div>
 
         {/* Mensaje */}
@@ -112,8 +124,13 @@ const ContactForm = ({ property }) => {
             <div className="invalid-feedback">{errors.message}</div>
           )}
         </div>
-        {/* El botón de envío se deshabilita mientras se está "enviando" el mensaje */}
-        <button type="submit" className="btn btn-brand" disabled={loading}>
+
+        {/* Botón */}
+        <button
+          type="submit"
+          className="btn btn-brand w-100"
+          disabled={loading}
+        >
           {loading ? "Enviando..." : "Enviar consulta"}
         </button>
       </form>
