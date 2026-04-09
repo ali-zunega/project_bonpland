@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { isValidEmail, isEmpty } from "../utils/validation";
+import { FIELD_LIMITS } from "../utils/constants";
 
 const useContactForm = (property) => {
   const isPropertyContact = !!property;
@@ -28,16 +29,14 @@ const useContactForm = (property) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  //  Derived values
+  // Derived values
   const reason = isPropertyContact ? getReasonFromProperty() : formData.reason;
-
   const title = isPropertyContact ? "Consulta por propiedad" : "Contacto";
 
-  //  Handlers
+  // Handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // evitar modificar reason si viene de property
     if (isPropertyContact && name === "reason") return;
 
     setFormData((prev) => ({
@@ -45,14 +44,14 @@ const useContactForm = (property) => {
       [name]: value,
     }));
 
-    // limpiar error del campo en tiempo real
+    // limpiar error del campo
     setErrors((prev) => ({
       ...prev,
       [name]: "",
     }));
   };
 
-  //  Validación
+  // Validación
   const validate = () => {
     const newErrors = {};
 
@@ -64,13 +63,15 @@ const useContactForm = (property) => {
     // Nombre
     if (isEmpty(name)) {
       newErrors.name = "El nombre es obligatorio";
+    } else if (name.length > FIELD_LIMITS.CONTACT_NAME) {
+      newErrors.name = `Máximo ${FIELD_LIMITS.CONTACT_NAME} caracteres`;
     }
 
     // Email
-    if (isEmpty(email)) {
-      newErrors.email = "El email es obligatorio";
-    } else if (!isValidEmail(email)) {
-      newErrors.email = "El email no es válido";
+    if (!isValidEmail(email)) {
+      newErrors.email = isEmpty(email)
+        ? "El email es obligatorio"
+        : "El email no es válido";
     }
 
     // Mensaje
@@ -78,9 +79,11 @@ const useContactForm = (property) => {
       newErrors.message = "El mensaje es obligatorio";
     } else if (message.length < 10) {
       newErrors.message = "Debe tener al menos 10 caracteres";
+    } else if (message.length > FIELD_LIMITS.CONTACT_MESSAGE) {
+      newErrors.message = `Máximo ${FIELD_LIMITS.CONTACT_MESSAGE} caracteres`;
     }
 
-    // Motivo (solo si no viene de propiedad)
+    // Motivo
     if (!isPropertyContact && isEmpty(formData.reason)) {
       newErrors.reason = "Seleccioná un motivo";
     }
@@ -93,7 +96,7 @@ const useContactForm = (property) => {
     return newErrors;
   };
 
-  //  Submit
+  // Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -102,7 +105,6 @@ const useContactForm = (property) => {
 
     if (Object.keys(validationErrors).length > 0) return;
 
-    //  Payload
     const payload = {
       ...formData,
       propertyId: property?.id || null,
@@ -113,23 +115,21 @@ const useContactForm = (property) => {
 
     console.log("Mensaje a enviar:", payload);
 
-    //  Simulación de envío
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
 
-      // ocultar mensaje de éxito
       setTimeout(() => setSuccess(false), 5000);
 
-      // reset form
+      // reset form (mantiene mensaje default si hay property)
       setFormData({
         name: "",
         email: "",
         phone: "",
         reason: "",
-        message: "",
+        message: getDefaultMessage(),
       });
 
       setErrors({});
