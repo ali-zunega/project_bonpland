@@ -15,39 +15,36 @@ import PropertyList from "../admin/PropertyList/PropertyList";
 import PropertyForm from "../admin/PropertyForm/PropertyForm";
 import PrivateRoute from "../app/PrivateRoute";
 
-
 export default function AppRouter() {
-    return (
-        <Routes>
+  return (
+    <Routes>
+      {/* Rutas públicas */}
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/login" element={<Login />} />
 
-            {/* Rutas públicas */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
+      <Route path="/properties" element={<Properties />} />
+      <Route path="/properties/:id" element={<PropertyDetails />} />
 
-            <Route path="/properties" element={<Properties />} />
-            <Route path="/properties/:id" element={<PropertyDetails />} />
+      {/* Rutas admin */}
 
-            {/* Rutas admin */}
+      <Route
+        path="/admin"
+        element={
+          <PrivateRoute allowedRoles={["admin"]}>
+            <AdminLayout />
+          </PrivateRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="properties" element={<PropertyList />} />
+        <Route path="properties/new" element={<PropertyForm />} />
+        <Route path="properties/:id/edit" element={<PropertyForm />} />
+      </Route>
 
-            <Route
-                path="admin"
-                element={
-                    <PrivateRoute allowedRoles={["admin"]}>
-                        <AdminLayout />
-                    </PrivateRoute>
-                }
-            >
-                <Route index element={<Dashboard />} />
-                <Route path="properties" element={<PropertyList />} />
-                <Route path="properties/new" element={<PropertyForm />} />
-                <Route path="properties/:id/edit" element={<PropertyForm />} />
-            </Route>
-
-            {/* fallback */}
-            <Route path="*" element={<h1>404 Not Found</h1>} />
-
-        </Routes>
-    );
+      {/* fallback */}
+      <Route path="*" element={<h1>404 Not Found</h1>} />
+    </Routes>
+  );
 }
