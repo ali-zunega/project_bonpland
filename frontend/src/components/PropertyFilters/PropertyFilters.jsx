@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./PropertyFilters.css";
 
 const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
   // Estado inicial para limpiar fácilmente
