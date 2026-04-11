@@ -56,8 +56,11 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
       <div className="row g-3">
         {/* Ambientes */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold">Ambientes</label>
+          <label className="form-label small fw-bold" htmlFor="rooms">
+            Ambientes
+          </label>
           <select
+            id="rooms"
             name="rooms"
             className="form-select"
             value={filters.rooms}
@@ -73,54 +76,78 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
 
         {/* País y Ciudad */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold">País</label>
+          <label className="form-label small fw-bold" htmlFor="country">
+            País
+          </label>
           <input
+            type="text"
+            id="country"
             name="country"
             className="form-control"
             placeholder="Ej: Argentina"
             value={filters.country}
             onChange={handleChange}
+            autoComplete="country-name"
           />
         </div>
         <div className="col-md-12">
-          <label className="form-label small fw-bold">Ciudad</label>
+          <label className="form-label small fw-bold" htmlFor="city">
+            Ciudad
+          </label>
           <input
+            type="text"
+            id="city"
             name="city"
             className="form-control"
             placeholder="Ej: Buenos Aires"
             value={filters.city}
             onChange={handleChange}
+            autoComplete="address-level2"
           />
         </div>
 
         {/* Metros Cuadrados */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold">Superficie (m²)</label>
+          <span className="form-label d-block small fw-bold mb-2">
+            Superficie (m²)
+          </span>
+
           <div className="input-group">
             <input
+              id="minSqM"
               type="number"
               name="minSqM"
               className="form-control"
               placeholder="Min"
+              aria-label="Superficie mínima en metros cuadrados"
               value={filters.minSqM}
               onChange={handleChange}
               min="0"
+              autoComplete="off"
+              onWheel={(e) => e.target.blur()}
             />
             <input
+              id="maxSqM"
               type="number"
               name="maxSqM"
               className="form-control"
               placeholder="Max"
+              aria-label="Superficie máxima en metros cuadrados"
               value={filters.maxSqM}
               onChange={handleChange}
+              autoComplete="off"
+              onWheel={(e) => e.target.blur()}
             />
           </div>
         </div>
 
         {/* Tipo */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold">Operación</label>
+          <label className="form-label small fw-bold" htmlFor="type">
+            Operación
+          </label>
           <select
+            id="type"
             name="type"
             className="form-select"
             value={filters.type}
@@ -134,25 +161,31 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
 
         {/* Rango de Precios */}
         <div className="col-12 mt-4">
-          <label className="form-label small fw-bold d-flex justify-content-between w-100">
-            Precio máximo:
-            <span className="text-primary">
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <label className="form-label small fw-bold mb-0" htmlFor="price">
+              Precio máximo
+            </label>
+            <span className="text-primary fw-bold small">
               {new Intl.NumberFormat("es-AR", {
                 style: "currency",
                 currency: "ARS",
                 maximumFractionDigits: 0,
-              }).format(filters.price)}
+              }).format(currentPrice)}{" "}
+              {/* <--- Usamos tu constante aquí */}
             </span>
-          </label>
+          </div>
+
           <input
+            id="price"
             type="range"
             name="price"
             className="form-range custom-slider"
             min={minLimit}
             max={maxLimit}
             step={maxLimit > 100000 ? 10000 : 100}
-            value={currentPrice} // Usamos la variable calculada
+            value={currentPrice} // <--- Y aquí también
             onChange={handleChange}
+            autoComplete="off"
           />
         </div>
         <div className="col-12 mt-4 d-grid gap-2">
