@@ -1,5 +1,6 @@
 import React from "react";
 import PropertyInfo from "../PropertyInfo/PropertyInfo";
+import "./PropertyCard.css";
 
 const PropertyCard = ({ property, onClick }) => {
   const mainImage = property.images?.[0];
@@ -12,18 +13,17 @@ const PropertyCard = ({ property, onClick }) => {
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => e.key === "Enter" && onClick()}
-      className={`card property-card mb-3 shadow-sm h-100 w-100 ${property.featured ? "card-featured" : ""}`}
+      className={`card property-card mt-auto mb-3 shadow-sm h-100 w-100 ${property.featured ? "card-featured" : ""}`}
       onMouseEnter={(e) =>
         (e.currentTarget.style.transform = "translateY(-5px)")
       }
       onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
     >
-      <div className="position-relative">
+      <div className="position-relative w-100 h-100">
         <img
           src={mainImage || "/placeholder.jpg"}
           className="card-img-top"
           alt={property.title}
-          style={{ aspectRatio: "16/9", objectFit: "cover" }}
         />
         {/*agrega una etiqueta de "Destacada" en la esquina superior izquierda si la propiedad es destacada*/}
         {property.featured && (
@@ -42,12 +42,12 @@ const PropertyCard = ({ property, onClick }) => {
 
       <div className="card-body d-flex flex-column">
         <PropertyInfo property={property} variant="card" showFeatured={false} />
+      </div>
 
-        <div className="mt-auto d-flex justify-content-end">
-          <button className="btn btn-primary" style={{ pointerEvents: "none" }}>
-            Ver más
-          </button>
-        </div>
+      <div className="card-footer mt-auto d-flex justify-content-end">
+        <button className="btn btn-primary" style={{ pointerEvents: "none" }}>
+          Ver más
+        </button>
       </div>
     </div>
   );

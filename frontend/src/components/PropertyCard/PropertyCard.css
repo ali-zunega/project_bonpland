@@ -12,16 +12,19 @@
 .property-card .card-body {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex-grow: 1;
 }
 
-/* Imagen consistente */
-.property-card img {
+img.card-img-top {
     aspect-ratio: 16/9;
     object-fit: cover;
 }
 
-/* Empuja botón abajo */
-.property-card .mt-auto {
-    margin-top: auto !important;
+.card-footer {
+    margin-top: auto;
+}
+
+.card {
+    border-radius: 16px;
+    overflow: hidden;
 }
