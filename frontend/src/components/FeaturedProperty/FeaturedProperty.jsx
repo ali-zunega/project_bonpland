@@ -20,11 +20,6 @@ const FeaturedProperty = ({ property, onClick }) => {
       {/* Imagen */}
       <div className="featured-image-container">
         <img src={imageUrl} alt={property.title} className="featured-image" />
-
-        {/* Badge sobre imagen */}
-        <span className={`badge-type ${isSale ? "sale" : "rent"}`}>
-          {propertyType}
-        </span>
       </div>
 
       {/* Contenido */}
@@ -35,6 +30,12 @@ const FeaturedProperty = ({ property, onClick }) => {
           <p className="featured-location">
             {property.city}, {property.country}
           </p>
+
+          <span
+            className={`badge badge-soft badge-type ${isSale ? "sale" : "rent"}`}
+          >
+            {propertyType}
+          </span>
 
           <p className="featured-price">$ {property.price}</p>
         </div>
