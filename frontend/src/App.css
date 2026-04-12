@@ -4,6 +4,7 @@
 :root {
   --brand-gold: #d4a75c;
   --brand-black: #1a1a1a;
+
 }
 
 .row {
@@ -80,7 +81,7 @@
 
 .badge-type.rent {
   background-color: #0dcaf0;
-  color: #000;
+  color: white;
 }
 
 /* ========================

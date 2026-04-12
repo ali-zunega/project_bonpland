@@ -1,36 +1,18 @@
+/* Flechas visibles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  padding: 20px;
+}
+
+/* Suavizar animación */
+.carousel-item {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Evitar que tapen contenido */
 #featuredCarousel {
-  padding: 0 80px;
-  /* Creamos un "pasillo" para las flechas */
-}
-
-.carousel-control-prev {
-  left: 0;
-  /* La flecha ahora vive en el pasillo izquierdo */
-}
-
-.carousel-control-next {
-  right: 0;
-  /* La flecha ahora vive en el pasillo derecho */
-}
-
-@media (max-width: 460px) {
-  #featuredCarousel {
-    padding: 0 15px;
-  }
-
-  .carousel-inner {
-    padding: 0 10px;
-  }
-
-  .carousel-item {
-    padding: 10px 0;
-  }
-
-  span.carousel-control-prev-icon,
-  span.carousel-control-next-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-
+  padding: 0 40px;
 }

@@ -58,7 +58,7 @@
     "area": 95,
     "rooms": 3,
     "status": "sold",
-    "type": "sale",
+    "type": "rent",
     "images": [
       "/Media/foto4.jpg"
     ],
@@ -144,7 +144,7 @@
     "images": [
       "/Media/foto9.jpg"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": 10,
@@ -172,12 +172,12 @@
     "area": 45,
     "rooms": 1,
     "status": "available",
-    "type": "sale",
+    "type": "rent",
     "images": [
       "/Media/foto11.jpg",
       "/Media/foto14.jpg"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": 12,
