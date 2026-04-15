@@ -15,7 +15,8 @@ const PropertyDetails = () => {
   const handleContact = () => {
     navigate("/contact", {
       state: {
-        property,
+        referenceCode: property.reference_code,
+        title: property.title,
         scrollToForm: true,
       },
     });

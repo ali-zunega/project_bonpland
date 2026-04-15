@@ -3,12 +3,13 @@ import { isValidEmail, isEmpty } from "../utils/validation";
 import { FIELD_LIMITS } from "../utils/constants";
 
 const useContactForm = (property) => {
-  const isPropertyContact = !!property;
+  const isPropertyContact = !!property?.referenceCode;
 
   // Helpers
   const getDefaultMessage = () => {
-    if (!property) return "";
-    return `Hola, me interesa la propiedad ${property?.reference} (${property?.title}).`;
+    if (!property) return "Hola, quisiera contactar con ustedes por ...";
+    // console.log("Property en getDefaultMessage:", property);
+    return `Hola, me interesa la propiedad (Ref: #${property?.referenceCode}). ¿Podrían brindarme más información?`;
   };
 
   const getReasonFromProperty = () => {
@@ -108,7 +109,7 @@ const useContactForm = (property) => {
     const payload = {
       ...formData,
       propertyId: property?.id || null,
-      propertyReference: property?.reference || null,
+      propertyReference: property?.reference_code || null,
       phone: formData.phone || null,
       reason: reason,
     };

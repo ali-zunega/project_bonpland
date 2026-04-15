@@ -17,13 +17,13 @@ const ContactForm = ({ property }) => {
       <h3 className="mb-3 fw-bold">{title}</h3>
 
       {/* Info propiedad */}
-      {property && (
+      {property?.referenceCode && (
         <div className="alert alert-info">
           <div>
             <strong>Propiedad:</strong> {property?.title}
           </div>
           <div>
-            <strong>Referencia:</strong> #{property?.reference}
+            <strong>Referencia:</strong> #{property?.referenceCode}
           </div>
         </div>
       )}

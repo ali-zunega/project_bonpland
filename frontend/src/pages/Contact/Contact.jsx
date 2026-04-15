@@ -4,7 +4,15 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 
 const Contact = () => {
   const location = useLocation();
-  const property = location.state?.property;
+  const property = location.state?.referenceCode
+    ? {
+        referenceCode: location.state.referenceCode,
+        // reference_code: location.state.referenceCode,
+        title: location.state.title,
+        operation_type: location.state.operation_type,
+        id: location.state.id,
+      }
+    : null;
 
   // Si viene del botón "Contactar" en PropertyDetails
   // hacemos scroll automático al formulario
