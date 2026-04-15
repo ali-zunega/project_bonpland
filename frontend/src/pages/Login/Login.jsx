@@ -2,14 +2,13 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/logo.jpeg";
 import { isEmpty, isValidEmail } from "../../utils/validation";
+import { useAuth } from "../../context/UseAuth.jsx";
+
+
 
 const Login = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
-
-  const users = [
-    { email: "admin@bonpland.com", password: "123456", role: "admin" },
-    { email: "user@bonpland.com", password: "123456", role: "user" },
-  ];
 
   // State
   const [formData, setFormData] = useState({
@@ -18,6 +17,7 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   // Handlers
   const handleChange = (e) => {
@@ -28,7 +28,7 @@ const Login = () => {
       [name]: value,
     }));
 
-    // limpiar error del campo
+    // limpiar errores
     setErrors((prev) => ({
       ...prev,
       [name]: "",
@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   // Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validate();
@@ -65,25 +65,17 @@ const Login = () => {
 
     if (Object.keys(validationErrors).length > 0) return;
 
-    const email = formData.email.trim().toLowerCase();
+    setLoading(true);
 
-    const userFound = users.find(
-      (user) => user.email === email && user.password === formData.password,
-    );
-
-    if (!userFound) {
+    try {
+      await login(formData.email, formData.password);
+      navigate("/admin");
+    } catch (error) {
+        console.error("Login error:", error);
       setErrors({ general: "Credenciales incorrectas" });
-      return;
+    } finally {
+      setLoading(false);
     }
-
-    // Guardar sesión
-    localStorage.setItem("user", JSON.stringify(userFound));
-    localStorage.setItem("auth", "true");
-    localStorage.setItem("role", userFound.role);
-
-    window.dispatchEvent(new Event("authChange"));
-
-    navigate("/admin");
   };
 
   return (
@@ -139,8 +131,12 @@ const Login = () => {
                 <p className="text-danger text-center">{errors.general}</p>
               )}
 
-              <button type="submit" className="btn btn-primary w-100">
-                Ingresar
+              <button
+                type="submit"
+                className="btn btn-primary w-100"
+                disabled={loading}
+              >
+                {loading ? "Ingresando..." : "Ingresar"}
               </button>
             </form>
           </div>

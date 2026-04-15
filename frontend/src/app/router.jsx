@@ -7,6 +7,7 @@ import Contact from "../pages/Contact/Contact";
 import Login from "../pages/Login/Login";
 import Properties from "../pages/Properties/Properties";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
+import PublicRoute from "./PublicRoute";
 
 // Admin
 import AdminLayout from "../admin/Layout/AdminLayout";
@@ -22,7 +23,9 @@ export default function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={ <PublicRoute>
+      <Login />
+    </PublicRoute>} />
 
       <Route path="/properties" element={<Properties />} />
       <Route path="/properties/:id" element={<PropertyDetails />} />

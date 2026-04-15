@@ -13,3 +13,11 @@
   color: #0d6efd;
   transform: translateY(-1px);
 }
+
+.btn-animated {
+  transition: all 0.4   s ease;
+}
+
+.btn-animated:hover {
+  transform: scale(1.05);
+}

@@ -1,16 +1,18 @@
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/UseAuth";
 
 const PrivateRoute = ({ children, allowedRoles }) => {
-  const isAuth = localStorage.getItem("auth") === "true";
-  const role = localStorage.getItem("role");
+    const { user } = useAuth();
 
-  if (!isAuth) return <Navigate to="/login" replace />;
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
 
-  if (allowedRoles && !allowedRoles.includes(role)) {
-    return <Navigate to="/" />;
-  }
+    if (allowedRoles && !allowedRoles.includes(user.role)) {
+        return <Navigate to="/" replace />;
+    }
 
-  return children;
+    return children;
 };
 
 export default PrivateRoute;

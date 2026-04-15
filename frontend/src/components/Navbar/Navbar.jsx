@@ -1,11 +1,17 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+import { useAuth } from "../../context/UseAuth.jsx";
 import "./Navbar.css";
 import logo from "../../assets/logo.jpeg";
 import * as bootstrap from "bootstrap";
 
 const Navbar = () => {
-  // manejo del colapso de menu en mobile para cerrar cuando se hace click en algun link
+  const { user, logout } = useAuth(); // 🔥 CLAVE
+  const navigate = useNavigate();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+
+
   const navbarCollapseRef = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -13,15 +19,13 @@ const Navbar = () => {
     if (!navbarCollapseRef.current) return;
 
     const bsCollapse = bootstrap.Collapse.getInstance(
-      navbarCollapseRef.current,
+      navbarCollapseRef.current
     );
 
-    if (bsCollapse) {
-      bsCollapse.hide();
-    }
-
+    if (bsCollapse) bsCollapse.hide();
     setIsMenuOpen(false);
   };
+
   const handleToggleMenu = () => {
     if (!navbarCollapseRef.current) return;
 
@@ -34,40 +38,16 @@ const Navbar = () => {
     bsCollapse.toggle();
     setIsMenuOpen((prev) => !prev);
   };
-  const navigate = useNavigate();
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const handleLogout = async () => {
+  setIsLoggingOut(true);
 
-  useEffect(() => {
-    const syncUser = () => {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      setUser(storedUser);
+  await new Promise(res => setTimeout(res, 500));
 
-      // 🔥 resetear estado de logout
-      setIsLoggingOut(false);
-    };
-
-    syncUser();
-
-    window.addEventListener("authChange", syncUser);
-
-    return () => window.removeEventListener("authChange", syncUser);
-  }, []);
-
-  const handleLogout = () => {
-    setIsLoggingOut(true);
-
-    setTimeout(() => {
-      localStorage.removeItem("user");
-
-      // 🔥 avisar cambio
-      window.dispatchEvent(new Event("authChange"));
-
-      navigate("/login");
-    }, 3000);
-  };
-
+  logout();
+  setIsLoggingOut(false); // 👈 control directo
+  navigate("/login");
+};
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow-sm sticky-top navbar-custom">
       <div className="container">
@@ -88,10 +68,10 @@ const Navbar = () => {
 
         <div
           className="collapse navbar-collapse"
-          id="navbarNav"
           ref={navbarCollapseRef}
         >
           <ul className="navbar-nav ms-auto gap-lg-3 align-items-lg-center">
+
             <li className="nav-item">
               <Link className="nav-link" to="/" onClick={handleCloseMenu}>
                 Inicio
@@ -99,11 +79,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/properties"
-                onClick={handleCloseMenu}
-              >
+              <Link className="nav-link" to="/properties" onClick={handleCloseMenu}>
                 Propiedades
               </Link>
             </li>
@@ -115,12 +91,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/contact"
-                onClick={handleCloseMenu}
-                state={null}
-              >
+              <Link className="nav-link" to="/contact" onClick={handleCloseMenu}>
                 Contacto
               </Link>
             </li>
@@ -128,17 +99,13 @@ const Navbar = () => {
             {/* LOGIN */}
             {!user && (
               <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  to="/login"
-                  onClick={handleCloseMenu}
-                >
+                <Link className="nav-link" to="/login" onClick={handleCloseMenu}>
                   Login
                 </Link>
               </li>
             )}
 
-            {/* ADMIN SOLO SI ES ADMIN */}
+            {/* ADMIN */}
             {user?.role === "admin" && (
               <li className="nav-item">
                 <Link
@@ -155,15 +122,15 @@ const Navbar = () => {
             {user && (
               <li className="nav-item">
                 <button
-                  onClick={handleLogout}
-                  disabled={isLoggingOut}
-                  className="btn btn-outline-danger btn-sm d-flex align-items-center gap-2"
-                >
-                  {isLoggingOut && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  {isLoggingOut ? "Saliendo..." : "Logout"}
-                </button>
+  onClick={handleLogout}
+  disabled={isLoggingOut}
+  className="btn btn-outline-danger btn-sm d-flex align-items-center gap-2"
+>
+  {isLoggingOut && (
+    <span className="spinner-border spinner-border-sm"></span>
+  )}
+  {isLoggingOut ? "Saliendo..." : "Logout"}
+</button>
               </li>
             )}
           </ul>
