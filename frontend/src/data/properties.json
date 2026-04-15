@@ -6,15 +6,17 @@
     "country": "Argentina",
     "city": "Mendoza",
     "price": 120000,
-    "area": 120,
+    "square_meters": 120,
     "rooms": 4,
     "status": "available",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "house",
     "images": [
       "/Media/foto1.jpeg",
       "/Media/foto18.jpg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "HOU-MYYJ"
   },
   {
     "id": 2,
@@ -23,14 +25,16 @@
     "country": "Argentina",
     "city": "Buenos Aires",
     "price": 80000,
-    "area": 60,
+    "square_meters": 60,
     "rooms": 2,
     "status": "reserved",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "apartment",
     "images": [
       "/Media/foto2.jpeg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "APT-BMQB"
   },
   {
     "id": 3,
@@ -39,14 +43,16 @@
     "country": "Argentina",
     "city": "Mar del Plata",
     "price": 150000,
-    "area": 120,
+    "square_meters": 120,
     "rooms": 4,
     "status": "available",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "house",
     "images": [
       "/Media/foto3.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "HOU-1Y07"
   },
   {
     "id": 4,
@@ -55,14 +61,16 @@
     "country": "Argentina",
     "city": "Rosario",
     "price": 210000,
-    "area": 95,
+    "square_meters": 95,
     "rooms": 3,
     "status": "sold",
-    "type": "rent",
+    "operation_type": "rent",
+    "type": "apartment",
     "images": [
       "/Media/foto4.jpg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "APT-RTVV"
   },
   {
     "id": 5,
@@ -71,14 +79,16 @@
     "country": "Argentina",
     "city": "Córdoba",
     "price": 55000,
-    "area": 32,
+    "square_meters": 32,
     "rooms": 1,
     "status": "available",
-    "type": "rent",
+    "operation_type": "rent",
+    "type": "apartment",
     "images": [
       "/Media/foto5.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "APT-9YZO"
   },
   {
     "id": 6,
@@ -87,14 +97,16 @@
     "country": "Argentina",
     "city": "Bariloche",
     "price": 175000,
-    "area": 85,
+    "square_meters": 85,
     "rooms": 3,
     "status": "available",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "land",
     "images": [
       "/Media/foto6.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "LAN-D21G"
   },
   {
     "id": 7,
@@ -103,15 +115,17 @@
     "country": "Uruguay",
     "city": "Montevideo",
     "price": 190000,
-    "area": 70,
+    "square_meters": 70,
     "rooms": 2,
     "status": "available",
-    "type": "rent",
+    "operation_type": "rent",
+    "type": "apartment",
     "images": [
       "/Media/foto7.jpg",
       "/Media/foto19.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "APT-07NL"
   },
   {
     "id": 8,
@@ -120,15 +134,17 @@
     "country": "Argentina",
     "city": "Mendoza",
     "price": 115000,
-    "area": 110,
+    "square_meters": 110,
     "rooms": 3,
     "status": "reserved",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "house",
     "images": [
       "/Media/foto8.jpg",
       "/Media/foto13.jpg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "HOU-TIK0"
   },
   {
     "id": 9,
@@ -137,14 +153,16 @@
     "country": "Argentina",
     "city": "Tucumán",
     "price": 45000,
-    "area": 40,
+    "square_meters": 40,
     "rooms": 2,
     "status": "available",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "commercial",
     "images": [
       "/Media/foto9.jpg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "COM-U6Y4"
   },
   {
     "id": 10,
@@ -153,14 +171,16 @@
     "country": "Argentina",
     "city": "Buenos Aires",
     "price": 420000,
-    "area": 180,
+    "square_meters": 180,
     "rooms": 5,
     "status": "available",
-    "type": "rent",
+    "operation_type": "rent",
+    "type": "apartment",
     "images": [
       "/Media/foto10.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "APT-MYSI"
   },
   {
     "id": 11,
@@ -169,15 +189,17 @@
     "country": "Argentina",
     "city": "Buenos Aires",
     "price": 125000,
-    "area": 45,
+    "square_meters": 45,
     "rooms": 1,
     "status": "available",
-    "type": "rent",
+    "operation_type": "rent",
+    "type": "apartment",
     "images": [
       "/Media/foto11.jpg",
       "/Media/foto14.jpg"
     ],
-    "featured": true
+    "featured": true,
+    "reference_code": "APT-JTX1"
   },
   {
     "id": 12,
@@ -186,14 +208,16 @@
     "country": "Argentina",
     "city": "Buenos Aires",
     "price": 80000,
-    "area": 60,
+    "square_meters": 60,
     "rooms": 2,
     "status": "reserved",
-    "type": "sale",
+    "operation_type": "sale",
+    "type": "apartment",
     "images": [
       "/Media/foto12.jpeg",
       "/Media/foto15.jpg"
     ],
-    "featured": false
+    "featured": false,
+    "reference_code": "APT-PPGX"
   }
 ]
