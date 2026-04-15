@@ -1,21 +1,17 @@
 import { Outlet, Link } from "react-router-dom";
+import "./AdminLayout.css";
 
 const AdminLayout = () => {
     return (
-        <div style={{ display: "flex", minHeight: "100vh" }}>
+        <div className="sidebar-container d-flex min-h-screen">
 
             {/* Sidebar */}
-            <aside style={{
-                width: "220px",
-                padding: "16px",
-                borderRight: "1px solid #ddd"
-            }}>
+            <aside className="sidebar">
                 <h3>Admin</h3>
-
-                <nav style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    <Link to="/admin">Dashboard</Link>
-                    <Link to="/admin/properties">Propiedades</Link>
-                    <Link to="/admin/properties/new">Nueva Propiedad</Link>
+                <nav className="sidebar-nav d-flex flex-column gap-2">
+                    <Link className="sidebar-link" to="/admin">Dashboard</Link>
+                    <Link className="sidebar-link" to="/admin/properties/new">Nueva Propiedad</Link>
+                    <Link className="sidebar-link" to="/admin/properties">Propiedades</Link>
                 </nav>
             </aside>
 

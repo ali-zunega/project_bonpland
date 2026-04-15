@@ -1,0 +1,28 @@
+@media screen and (max-width: 767px) {
+    .sidebar-container {
+        flex-direction: column  ;
+    }
+    .sidebar{
+        width: 375px!important;
+    }
+    .sidebar-nav {
+        flex-direction: row!important;
+    }
+}
+
+.sidebar{
+    width: 220px;
+    padding: 16px;
+    border-right: 1px solid #ddd;;
+}
+
+.sidebar-link{
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.sidebar-link:hover {
+    color: #b3841f;
+}
