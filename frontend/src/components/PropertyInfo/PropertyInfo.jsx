@@ -9,7 +9,7 @@ const PropertyInfo = ({ property, variant = "card", showFeatured = true }) => {
 
   const isCard = variant === "card";
   const isDetails = variant === "details";
-  const typeLabel = property.type === "sale" ? "Venta" : "Alquiler";
+  const typeLabel = property.operation_type === "sale" ? "Venta" : "Alquiler";
 
   return (
     <div className={isDetails ? "property-info" : ""}>
@@ -21,7 +21,7 @@ const PropertyInfo = ({ property, variant = "card", showFeatured = true }) => {
           </span>
         )}
         <span
-          className={`badge badge-soft text-uppercase d-inline-flex align-items-center badge-type ${property.type}`}
+          className={`badge badge-soft text-uppercase d-inline-flex align-items-center badge-type ${property.operation_type}`}
         >
           {typeLabel}
         </span>
@@ -54,10 +54,12 @@ const PropertyInfo = ({ property, variant = "card", showFeatured = true }) => {
         <span className="feature-item">
           <i className="bi bi-door-open property-icon"></i> {property.rooms} amb
         </span>
-
+        <span>
+          <i className="bi bi-dot"></i>
+        </span>
         <span className="feature-item">
-          <i className="bi bi-aspect-ratio property-icon"></i> {property.area}{" "}
-          m²
+          <i className="bi bi-aspect-ratio property-icon"></i>{" "}
+          {property.square_meters} m²
         </span>
       </div>
 

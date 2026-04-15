@@ -119,6 +119,7 @@ const Navbar = () => {
                 className="nav-link"
                 to="/contact"
                 onClick={handleCloseMenu}
+                state={null}
               >
                 Contacto
               </Link>

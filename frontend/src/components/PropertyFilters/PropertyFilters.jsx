@@ -10,7 +10,7 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
     minSqM: "",
     maxSqM: "",
     price: maxLimit, // Se inicializa una vez al montar
-    type: "",
+    operation_type: "",
   };
 
   const [filters, setFilters] = useState(initialState);
@@ -144,14 +144,14 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
 
         {/* Tipo */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold" htmlFor="type">
+          <label className="form-label small fw-bold" htmlFor="operation_type">
             Operación
           </label>
           <select
-            id="type"
-            name="type"
+            id="operation_type"
+            name="operation_type"
             className="form-select"
-            value={filters.type}
+            value={filters.operation_type}
             onChange={handleChange}
           >
             <option value="">Cualquiera</option>

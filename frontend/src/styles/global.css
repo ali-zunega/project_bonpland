@@ -1,18 +1,35 @@
 /* reset de estilos */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, p, figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
+  padding: 0;
 }
 
-img, picture {
+img,
+picture {
   max-width: 100%;
   display: block;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -24,7 +41,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 /* fin reset */
@@ -42,7 +59,7 @@ body {
   --bs-border-radius: 10px;
 
   /* Extras */
-  --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --accent-color: var(--brand-gold);
 }
 

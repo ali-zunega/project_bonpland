@@ -42,7 +42,7 @@ const Properties = () => {
 
       // Si la propiedad no tiene un valor definido para sqM o price,
       // lo tratamos como 0 para evitar errores de comparación
-      const propSqM = prop.area || 0;
+      const propSqM = prop.square_meters || 0;
       const propPrice = prop.price || 0;
 
       const matchesRooms =
@@ -66,8 +66,9 @@ const Properties = () => {
       const matchesPrice = propPrice <= priceFilter;
 
       const matchesType =
-        filters.type === "" ||
-        prop.type.toLowerCase() === filters.type.toLowerCase();
+        filters.operation_type === "" ||
+        prop.operation_type.toLowerCase() ===
+          filters.operation_type.toLowerCase();
 
       return (
         matchesRooms &&
