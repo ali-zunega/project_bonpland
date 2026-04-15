@@ -52,12 +52,12 @@ const usePropertyForm = (initialData) => {
       newErrors.rooms = "Debe tener al menos 1 ambiente";
     }
 
-    if (!formData.area || formData.area <= 0) {
-      newErrors.area = "Superficie inválida";
+    if (!formData.square_meters || formData.square_meters <= 0) {
+      newErrors.square_meters = "Superficie inválida";
     }
 
-    if (!formData.type) {
-      newErrors.type = "Seleccioná un tipo";
+    if (!formData.operation_type) {
+      newErrors.operation_type = "Seleccioná un tipo";
     }
 
     return newErrors;

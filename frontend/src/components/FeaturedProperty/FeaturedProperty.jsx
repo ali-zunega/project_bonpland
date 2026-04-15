@@ -11,7 +11,7 @@ const getMainImage = (images = []) => {
 };
 
 const FeaturedProperty = ({ property, onClick }) => {
-  const isSale = property.type === "sale";
+  const isSale = property.operation_type === "sale";
   const propertyType = isSale ? "VENTA" : "ALQUILER";
   const imageUrl = getMainImage(property.images);
 
