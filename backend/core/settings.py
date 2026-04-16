@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "core",
     "properties",
     "contacts",
-    "company",
+    "companies",
 ]
 
 AUTH_USER_MODEL = "users.User"

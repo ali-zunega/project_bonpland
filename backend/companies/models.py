@@ -28,7 +28,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
 
     company = models.ForeignKey(
-        "Company", on_delete=models.CASCADE, related_name="users"
+        "companies.Company", on_delete=models.CASCADE, related_name="users"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
