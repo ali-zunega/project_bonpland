@@ -18,12 +18,6 @@ export const generateRandomCode = (length = 4) => {
 
 export const generateReferenceCode = (type) => {
   const prefix = TYPE_PREFIX[type];
-  console.log(
-    "Generating reference code for type:",
-    type,
-    "with prefix:",
-    prefix,
-  );
 
   if (!prefix) {
     throw new Error("Invalid property type for reference code");

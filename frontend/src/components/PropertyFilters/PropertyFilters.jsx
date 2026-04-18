@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import "./PropertyFilters.css";
+import countries from "../../data/countries.json";
+import cities from "../../data/cities.json";
 
-const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
+const PropertyFilters = ({ onSearch }) => {
   // Estado inicial para limpiar fácilmente
   const initialState = {
     rooms: "",
-    country: "",
-    city: "",
+    countryId: "",
+    cityId: "",
     minSqM: "",
     maxSqM: "",
-    price: maxLimit, // Se inicializa una vez al montar
+    minPrice: "",
+    maxPrice: "",
     operation_type: "",
   };
 
   const [filters, setFilters] = useState(initialState);
-
-  // Si el usuario no movió el slider, queremos que 'price' sea maxLimit
-  // Pero si lo movió, queremos respetar su elección.
-  // Usaremos un valor "fallback" para el slider:
-  const currentPrice = filters.price || maxLimit;
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -76,35 +74,49 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
         </div>
 
         {/* País y Ciudad */}
+        {/* Select de País */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold" htmlFor="country">
+          <label className="form-label small fw-bold" htmlFor="countryId">
             País
           </label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            className="form-control"
-            placeholder="Ej: Argentina"
-            value={filters.country}
+          <select
+            id="countryId"
+            name="countryId"
+            className="form-select"
+            value={filters.countryId}
             onChange={handleChange}
-            autoComplete="country-name"
-          />
+          >
+            <option value="">Selecciona un país</option>
+            {countries.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
         </div>
+
+        {/* Select de Ciudad */}
         <div className="col-md-12">
-          <label className="form-label small fw-bold" htmlFor="city">
+          <label className="form-label small fw-bold" htmlFor="cityId">
             Ciudad
           </label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            className="form-control"
-            placeholder="Ej: Buenos Aires"
-            value={filters.city}
+          <select
+            id="cityId"
+            name="cityId"
+            className="form-select"
+            value={filters.cityId}
             onChange={handleChange}
-            autoComplete="address-level2"
-          />
+            disabled={!filters.countryId}
+          >
+            <option value="">Selecciona una ciudad</option>
+            {cities
+              .filter((city) => city.country_id === Number(filters.countryId))
+              .map((city) => (
+                <option key={city.id} value={city.id}>
+                  {city.name}
+                </option>
+              ))}
+          </select>
         </div>
 
         {/* Metros Cuadrados */}
@@ -142,7 +154,7 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
           </div>
         </div>
 
-        {/* Tipo */}
+        {/* Tipo Operacion */}
         <div className="col-md-12">
           <label className="form-label small fw-bold" htmlFor="operation_type">
             Operación
@@ -161,34 +173,40 @@ const PropertyFilters = ({ onSearch, maxLimit, minLimit }) => {
         </div>
 
         {/* Rango de Precios */}
-        <div className="col-12 mt-4">
-          <div className="d-flex justify-content-between align-items-center mb-2">
-            <label className="form-label small fw-bold mb-0" htmlFor="price">
-              Precio máximo
-            </label>
-            <span className="text-primary fw-bold small">
-              {new Intl.NumberFormat("es-AR", {
-                style: "currency",
-                currency: "ARS",
-                maximumFractionDigits: 0,
-              }).format(currentPrice)}{" "}
-              {/* <--- Usamos tu constante aquí */}
-            </span>
-          </div>
+        <div className="col-md-12">
+          <span className="form-label d-block small fw-bold mb-2">Precio</span>
 
-          <input
-            id="price"
-            type="range"
-            name="price"
-            className="form-range custom-slider"
-            min={minLimit}
-            max={maxLimit}
-            step={maxLimit > 100000 ? 10000 : 100}
-            value={currentPrice} // <--- Y aquí también
-            onChange={handleChange}
-            autoComplete="off"
-          />
+          <div className="input-group">
+            <input
+              id="minPrice"
+              type="number"
+              name="minPrice"
+              className="form-control"
+              placeholder="Min"
+              aria-label="Precio mínimo"
+              value={filters.minPrice}
+              onChange={handleChange}
+              min="0"
+              autoComplete="off"
+              onWheel={(e) => e.target.blur()}
+            />
+            <input
+              id="maxPrice"
+              type="number"
+              name="maxPrice"
+              className="form-control"
+              placeholder="Max"
+              aria-label="Precio máximo"
+              value={filters.maxPrice}
+              onChange={handleChange}
+              min="0"
+              autoComplete="off"
+              onWheel={(e) => e.target.blur()}
+            />
+          </div>
         </div>
+
+        {/* Botones */}
         <div className="col-12 mt-4 d-grid gap-2">
           <button type="submit" className="btn btn-primary fw-bold py-2">
             Aplicar filtros

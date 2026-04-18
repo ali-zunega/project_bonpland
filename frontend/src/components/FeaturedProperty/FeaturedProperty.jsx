@@ -28,7 +28,7 @@ const FeaturedProperty = ({ property, onClick }) => {
           <h3 className="featured-title fw-bold">{property.title}</h3>
 
           <p className="featured-location">
-            {property.city}, {property.country}
+            {property.cityName}, {property.countryName}
           </p>
 
           <span

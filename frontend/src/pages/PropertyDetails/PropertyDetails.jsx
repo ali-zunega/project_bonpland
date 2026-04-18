@@ -1,16 +1,29 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import properties from "../../data/properties.json";
+import { useState, useEffect } from "react";
+import { propertyService } from "../../services/propertyService";
 import PropertyInfo from "../../components/PropertyInfo/PropertyInfo";
 
 const PropertyDetails = () => {
   const navigate = useNavigate();
-
   const { id } = useParams();
 
-  const property = properties.find((p) => p.id === parseInt(id));
+  const [property, setProperty] = useState(null);
 
-  const [selectedImage, setSelectedImage] = useState(property?.images?.[0]);
+  useEffect(() => {
+    const fetchProperty = async () => {
+      const res = await propertyService.getPropertyById(id);
+      setProperty(res.data);
+    };
+
+    fetchProperty();
+  }, [id]);
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const primaryImage =
+    property?.images?.find((img) => img.is_primary) || property?.images?.[0];
+
+  const currentImage = selectedImage || primaryImage;
 
   const handleContact = () => {
     navigate("/contact", {
@@ -22,7 +35,6 @@ const PropertyDetails = () => {
     });
   };
 
-  // Si no se encuentra la propiedad, mostrar mensaje de error
   if (!property) {
     return (
       <div className="container mt-4 text-center d-flex flex-column align-items-center justify-content-center gap-3">
@@ -44,49 +56,50 @@ const PropertyDetails = () => {
         {/* GALERÍA */}
         <div className="col-md-6">
           {/* Imagen principal */}
-          <img
-            src={selectedImage}
-            alt={property.title}
-            className="img-fluid rounded mb-3"
-            style={{
-              width: "100%",
-              height: "400px",
-              objectFit: "cover",
-            }}
-          />
+          {currentImage && (
+            <img
+              src={currentImage.url}
+              alt={property.title}
+              className="img-fluid rounded mb-3"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+              }}
+            />
+          )}
 
           {/* Miniaturas */}
-          <div className="d-flex gap-2 flex-wrap">
-            {property.images?.length > 1 && (
-              <div className="d-flex gap-2 flex-wrap">
-                {property.images.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`img-${index}`}
-                    onClick={() => setSelectedImage(img)}
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      objectFit: "cover",
-                      cursor: "pointer",
-                      border:
-                        selectedImage === img
-                          ? "2px solid #0d6efd"
-                          : "1px solid #ccc",
-                      borderRadius: "5px",
-                    }}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+          {property.images?.length > 1 && (
+            <div className="d-flex gap-2 flex-wrap">
+              {property.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img.url}
+                  alt={`img-${index}`}
+                  onClick={() => setSelectedImage(img)}
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    objectFit: "cover",
+                    cursor: "pointer",
+                    border:
+                      currentImage?.url === img.url
+                        ? "2px solid #0d6efd"
+                        : "1px solid #ccc",
+                    borderRadius: "5px",
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
+
+        {/* INFO */}
         <div className="col-md-6">
           <div className="p-4 shadow-sm rounded">
             <PropertyInfo property={property} variant="details" />
 
-            {/* BOTONES */}
             <div className="d-flex gap-2 mt-3">
               <button className="btn btn-brand" onClick={handleContact}>
                 Me interesa esta propiedad

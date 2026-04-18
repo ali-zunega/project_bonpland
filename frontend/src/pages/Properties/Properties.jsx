@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Properties.css";
-import normalizeText from "../../utils/normalizeText";
+import { propertyService } from "../../services/propertyService";
+
 import * as bootstrap from "bootstrap";
-import propertiesData from "../../data/properties.json";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import PropertyFilters from "../../components/PropertyFilters/PropertyFilters";
@@ -11,13 +11,60 @@ const Properties = () => {
   const filtersRef = useRef(null);
   const navigate = useNavigate();
 
-  // Límites para el componente de filtros
-  const maxPriceInData = Math.max(...propertiesData.map((p) => p.price), 0);
-  const minPriceInData = Math.min(...propertiesData.map((p) => p.price), 0);
-
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-  const [filteredProperties, setFilteredProperties] = useState(propertiesData);
 
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit: 9,
+  });
+
+  const [totalPages, setTotalPages] = useState(1);
+
+  const [properties, setProperties] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch de propiedades (simula backend)
+  useEffect(() => {
+    const loadProperties = async () => {
+      setLoading(true);
+
+      const res = await propertyService.fetchProperties(filters);
+      setProperties(res.data);
+
+      setTotal(res.total);
+      setTotalPages(res.totalPages);
+
+      setLoading(false);
+    };
+
+    loadProperties();
+  }, [filters]);
+
+  {
+    /* Handlers de Paginación */
+  }
+  const goToPage = (page) => {
+    setFilters((prev) => ({
+      ...prev,
+      page,
+    }));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const nextPage = () => {
+    if (filters.page < totalPages) {
+      goToPage(filters.page + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (filters.page > 1) {
+      goToPage(filters.page - 1);
+    }
+  };
+
+  // Toggle filtros mobile
   const handleToggleFilters = () => {
     const el = filtersRef.current;
     if (!el) return;
@@ -31,60 +78,18 @@ const Properties = () => {
     setIsFiltersOpen((prev) => !prev);
   };
 
-  const handleSearch = (filters) => {
-    const results = propertiesData.filter((prop) => {
-      // normalizamos los valores de metros cuadrados y precio para compararlos correctamente
-      const minSqM = filters.minSqM !== "" ? parseInt(filters.minSqM) : 0;
-      const maxSqM =
-        filters.maxSqM !== "" ? parseInt(filters.maxSqM) : Infinity;
+  //  Aplicar filtros
+  const handleSearch = (newFilters) => {
+    setFilters((prev) => ({
+      ...prev,
+      ...newFilters,
+      page: 1, // reset paginación
+    }));
 
-      const priceFilter = parseInt(filters.price) || Infinity;
-
-      // Si la propiedad no tiene un valor definido para sqM o price,
-      // lo tratamos como 0 para evitar errores de comparación
-      const propSqM = prop.square_meters || 0;
-      const propPrice = prop.price || 0;
-
-      const matchesRooms =
-        filters.rooms === "" ||
-        (filters.rooms === "4"
-          ? prop.rooms >= 4
-          : prop.rooms === parseInt(filters.rooms));
-
-      const matchesCountry =
-        filters.country === "" ||
-        normalizeText(prop.country).includes(normalizeText(filters.country));
-
-      const matchesCity =
-        filters.city === "" ||
-        normalizeText(prop.city).includes(normalizeText(filters.city));
-
-      // asignamos elementos que cumplen con los filtros
-      const matchesMinSqM = propSqM >= minSqM;
-      const matchesMaxSqM = propSqM <= maxSqM;
-
-      const matchesPrice = propPrice <= priceFilter;
-
-      const matchesType =
-        filters.operation_type === "" ||
-        prop.operation_type.toLowerCase() ===
-          filters.operation_type.toLowerCase();
-
-      return (
-        matchesRooms &&
-        matchesCountry &&
-        matchesCity &&
-        matchesMinSqM &&
-        matchesMaxSqM &&
-        matchesPrice &&
-        matchesType
-      );
-    });
-
-    setFilteredProperties(results);
     closeFilters();
   };
 
+  //  Cerrar filtros en mobile
   const closeFilters = () => {
     const el = filtersRef.current;
     if (el && window.innerWidth < 992) {
@@ -98,6 +103,7 @@ const Properties = () => {
 
   return (
     <div className="container-fluid mt-2 px-4">
+      {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex flex-column align-items-center w-100 py-2">
           <h2 className="fw-bold mb-2">Propiedades Disponibles</h2>
@@ -105,7 +111,7 @@ const Properties = () => {
           <div
             className="bg-primary mt-2"
             style={{ height: "3px", width: "80px", borderRadius: "2px" }}
-          ></div>
+          />
         </div>
 
         <button
@@ -118,6 +124,7 @@ const Properties = () => {
       </div>
 
       <div className="row g-4">
+        {/* Sidebar filtros */}
         <aside className="col-12 col-lg-3">
           <div
             className="collapse d-lg-block sticky-lg-top"
@@ -125,66 +132,100 @@ const Properties = () => {
             style={{ top: "20px" }}
             ref={filtersRef}
           >
-            <PropertyFilters
-              key={maxPriceInData}
-              onSearch={handleSearch}
-              maxLimit={maxPriceInData}
-              minLimit={minPriceInData}
-            />
+            <PropertyFilters onSearch={handleSearch} />
           </div>
         </aside>
 
+        {/* Listado */}
         <div className="col-12 col-lg-9">
-          {/* Contador de resultados: solo se muestra si hay datos en la base */}
+          {/* Loading */}
+          {loading ? (
+            <div className="d-flex flex-column justify-content-center align-items-center py-5">
+              <div
+                className="spinner spinner-border mb-3 text-secondary"
+                role="status"
+                aria-hidden="true"
+              ></div>
+              <strong>Cargando propiedades...</strong>
+            </div>
+          ) : (
+            <>
+              {/* Contador */}
+              {total > 0 && (
+                <p className="text-muted mb-3">
+                  Mostrando <strong>{properties.length}</strong> de{" "}
+                  <strong>{total}</strong> propiedades
+                </p>
+              )}
 
-          {propertiesData.length > 0 && (
-            <p className="text-muted mb-3">
-              Mostrando <strong>{filteredProperties.length}</strong> de{" "}
-              <strong>{propertiesData.length}</strong> propiedades
-            </p>
+              <div className="row g-4">
+                {/* Sin resultados */}
+                {properties.length === 0 ? (
+                  <div className="text-center py-5 w-100">
+                    <i
+                      className="bi bi-search"
+                      style={{ fontSize: "3rem", color: "#abaaaa" }}
+                    ></i>
+                    <h3 className="mt-3 text-muted">
+                      No encontramos lo que buscas
+                    </h3>
+                    <p>Prueba ajustando los filtros o limpiando la búsqueda.</p>
+                  </div>
+                ) : (
+                  /* Resultados */
+                  properties.map((property) => (
+                    <div
+                      key={property.id}
+                      className="col-12 col-sm-6 col-lg-4 d-flex"
+                    >
+                      <PropertyCard
+                        property={property}
+                        onClick={() => navigate(`/properties/${property.id}`)}
+                      />
+                    </div>
+                  ))
+                )}
+              </div>
+            </>
           )}
 
-          <div className="row g-4">
-            {/* Estados de json de propiedades */}
-            {/* 1ro - no tiene propiedades cargadas - VACIO */}
-            {propertiesData.length === 0 ? (
-              <div className="text-center py-5 w-100">
-                <i
-                  className="bi bi-house-x"
-                  style={{ fontSize: "3rem", color: "#abaaaa" }}
-                ></i>
-                <h3 className="mt-3 text-muted">
-                  No hay propiedades disponibles
-                </h3>
-                <p>Pronto agregaremos nuevas propiedades.</p>
-              </div>
-            ) : filteredProperties.length === 0 ? (
-              /*2do - tiene propiedades pero no coinciden con los filtros */
-              <div className="text-center py-5 w-100">
-                <i
-                  className="bi bi-search"
-                  style={{ fontSize: "3rem", color: "#abaaaa" }}
-                ></i>
-                <h3 className="mt-3 text-muted">
-                  No encontramos lo que buscas
-                </h3>
-                <p>Prueba ajustando los filtros o limpiando la búsqueda.</p>
-              </div>
-            ) : (
-              /* 3ro - mapea las propiedades que coinciden con el/los filtros */
-              filteredProperties.map((property) => (
-                <div
-                  key={property.id}
-                  className="col-12 col-sm-6 col-lg-4 d-flex"
-                >
-                  <PropertyCard
-                    property={property}
-                    onClick={() => navigate(`/properties/${property.id}`)}
-                  />
-                </div>
-              ))
-            )}
-          </div>
+          {totalPages > 1 && (
+            <div className="d-flex justify-content-center align-items-center gap-2 mt-4 flex-wrap">
+              <button
+                className="btn btn-outline-primary btn-sm"
+                onClick={prevPage}
+                disabled={filters.page === 1}
+              >
+                Anterior
+              </button>
+
+              {[...Array(totalPages)].map((_, i) => {
+                const pageNumber = i + 1;
+
+                return (
+                  <button
+                    key={pageNumber}
+                    className={`btn btn-sm ${
+                      filters.page === pageNumber
+                        ? "btn-primary"
+                        : "btn-outline-primary"
+                    }`}
+                    onClick={() => goToPage(pageNumber)}
+                  >
+                    {pageNumber}
+                  </button>
+                );
+              })}
+
+              <button
+                className="btn btn-outline-primary btn-sm"
+                onClick={nextPage}
+                disabled={filters.page === totalPages}
+              >
+                Siguiente
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

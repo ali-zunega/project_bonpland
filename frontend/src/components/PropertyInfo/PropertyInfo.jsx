@@ -11,6 +11,8 @@ const PropertyInfo = ({ property, variant = "card", showFeatured = true }) => {
   const isDetails = variant === "details";
   const typeLabel = property.operation_type === "sale" ? "Venta" : "Alquiler";
 
+  // console.log("PropertyInfo - property:", property);
+
   return (
     <div className={isDetails ? "property-info" : ""}>
       {/* BADGES */}
@@ -36,8 +38,9 @@ const PropertyInfo = ({ property, variant = "card", showFeatured = true }) => {
 
       {/* UBICACIÓN */}
       <p className="text-muted mb-2">
-        <i className="bi bi-geo-alt-fill property-icon"></i> {property.city},{" "}
-        {property.country}
+        <i className="bi bi-geo-alt-fill property-icon"></i>{" "}
+        {property.city.name || property.city},{" "}
+        {property.country.name || property.country}
       </p>
 
       {/* PRECIO */}
