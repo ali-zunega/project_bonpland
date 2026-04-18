@@ -50,7 +50,7 @@ class Property(models.Model):
     )
 
     company = models.ForeignKey(
-        "company.Company", on_delete=models.CASCADE, related_name="properties"
+        "companies.Company", on_delete=models.CASCADE, related_name="properties"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

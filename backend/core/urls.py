@@ -26,8 +26,7 @@ urlpatterns = [
     # Rutas de las apps
     path("api/", include("properties.urls")),
     path("api/", include("contacts.urls")),
-    path("api/", include("users.urls")),
-    path("api/", include("company.urls")),
+    path("api/", include("companies.urls")),
     # API Documentation
     path(
         "swagger/",
