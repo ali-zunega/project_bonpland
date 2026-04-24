@@ -6,3 +6,9 @@
 .properties-grid .col {
     display: flex;
 }
+
+.spinner {
+    width: 3rem;
+    height: 3rem;
+    animation-duration: 0.8s;
+}

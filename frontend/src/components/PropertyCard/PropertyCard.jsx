@@ -3,7 +3,7 @@ import PropertyInfo from "../PropertyInfo/PropertyInfo";
 import "./PropertyCard.css";
 
 const PropertyCard = ({ property, onClick }) => {
-  const mainImage = property.images?.[0];
+  const mainImage = property.images?.find((img) => img.is_primary)?.url;
   const totalImages = property.images?.length || 0;
 
   // si esta destacada, agregar un borde amarillo a la tarjeta

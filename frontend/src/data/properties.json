@@ -3,8 +3,7 @@
     "id": 1,
     "title": "Casa en Mendoza",
     "description": "Amplia casa con patio",
-    "country": "Argentina",
-    "city": "Mendoza",
+    "city_id": 1,
     "price": 120000,
     "square_meters": 120,
     "rooms": 4,
@@ -12,8 +11,16 @@
     "operation_type": "sale",
     "type": "house",
     "images": [
-      "/Media/foto1.jpeg",
-      "/Media/foto18.jpg"
+      {
+        "url": "/Media/foto1.jpeg",
+        "is_primary": true,
+        "created_at": "2024-06-01T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto17.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-02T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "HOU-MYYJ"
@@ -22,8 +29,7 @@
     "id": 2,
     "title": "Departamento en Buenos Aires",
     "description": "Ubicación céntrica",
-    "country": "Argentina",
-    "city": "Buenos Aires",
+    "city_id": 2,
     "price": 80000,
     "square_meters": 60,
     "rooms": 2,
@@ -31,7 +37,11 @@
     "operation_type": "sale",
     "type": "apartment",
     "images": [
-      "/Media/foto2.jpeg"
+      {
+        "url": "/Media/foto2.jpeg",
+        "is_primary": true,
+        "created_at": "2024-06-03T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "APT-BMQB"
@@ -40,8 +50,7 @@
     "id": 3,
     "title": "Casa de Verano en Mar del Plata",
     "description": "A tres cuadras de la playa, con jardín y parrilla.",
-    "country": "Argentina",
-    "city": "Mar del Plata",
+    "city_id": 3,
     "price": 150000,
     "square_meters": 120,
     "rooms": 4,
@@ -49,7 +58,11 @@
     "operation_type": "sale",
     "type": "house",
     "images": [
-      "/Media/foto3.jpg"
+      {
+        "url": "/Media/foto3.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-04T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "HOU-1Y07"
@@ -58,8 +71,7 @@
     "id": 4,
     "title": "Penthouse con Vista al Río",
     "description": "Vistas panorámicas y terminaciones de lujo.",
-    "country": "Argentina",
-    "city": "Rosario",
+    "city_id": 4,
     "price": 210000,
     "square_meters": 95,
     "rooms": 3,
@@ -67,7 +79,11 @@
     "operation_type": "rent",
     "type": "apartment",
     "images": [
-      "/Media/foto4.jpg"
+      {
+        "url": "/Media/foto4.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-05T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "APT-RTVV"
@@ -76,8 +92,7 @@
     "id": 5,
     "title": "Monoambiente en Nueva Córdoba",
     "description": "Cerca de la zona universitaria, excelente rentabilidad.",
-    "country": "Argentina",
-    "city": "Córdoba",
+    "city_id": 5,
     "price": 55000,
     "square_meters": 32,
     "rooms": 1,
@@ -85,7 +100,16 @@
     "operation_type": "rent",
     "type": "apartment",
     "images": [
-      "/Media/foto5.jpg"
+      {
+        "url": "/Media/foto5.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-06T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto16.webp",
+        "is_primary": false,
+        "created_at": "2024-06-07T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "APT-9YZO"
@@ -94,8 +118,7 @@
     "id": 6,
     "title": "Cabaña en Bariloche",
     "description": "Rodeada de pinos con vista a las montañas.",
-    "country": "Argentina",
-    "city": "Bariloche",
+    "city_id": 6,
     "price": 175000,
     "square_meters": 85,
     "rooms": 3,
@@ -103,7 +126,11 @@
     "operation_type": "sale",
     "type": "land",
     "images": [
-      "/Media/foto6.jpg"
+      {
+        "url": "/Media/foto6.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-07T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "LAN-D21G"
@@ -112,8 +139,7 @@
     "id": 7,
     "title": "Departamento en Pocitos",
     "description": "Excelente zona residencial cerca de la rambla.",
-    "country": "Uruguay",
-    "city": "Montevideo",
+    "city_id": 7,
     "price": 190000,
     "square_meters": 70,
     "rooms": 2,
@@ -121,8 +147,16 @@
     "operation_type": "rent",
     "type": "apartment",
     "images": [
-      "/Media/foto7.jpg",
-      "/Media/foto19.jpg"
+      {
+        "url": "/Media/foto7.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-08T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto19.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-09T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "APT-07NL"
@@ -131,8 +165,7 @@
     "id": 8,
     "title": "Dúplex en Mendoza",
     "description": "Zona de bodegas, entorno muy tranquilo.",
-    "country": "Argentina",
-    "city": "Mendoza",
+    "city_id": 1,
     "price": 115000,
     "square_meters": 110,
     "rooms": 3,
@@ -140,8 +173,16 @@
     "operation_type": "sale",
     "type": "house",
     "images": [
-      "/Media/foto8.jpg",
-      "/Media/foto13.jpg"
+      {
+        "url": "/Media/foto8.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-09T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto18.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-10T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "HOU-TIK0"
@@ -150,8 +191,7 @@
     "id": 9,
     "title": "Oficina Céntrica",
     "description": "Ideal para estudio jurídico o contable.",
-    "country": "Argentina",
-    "city": "Tucumán",
+    "city_id": 8,
     "price": 45000,
     "square_meters": 40,
     "rooms": 2,
@@ -159,7 +199,11 @@
     "operation_type": "sale",
     "type": "commercial",
     "images": [
-      "/Media/foto9.jpg"
+      {
+        "url": "/Media/foto9.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-10T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "COM-U6Y4"
@@ -168,8 +212,7 @@
     "id": 10,
     "title": "Piso Exclusivo en Recoleta",
     "description": "Edificio francés de época totalmente reciclado.",
-    "country": "Argentina",
-    "city": "Buenos Aires",
+    "city_id": 2,
     "price": 420000,
     "square_meters": 180,
     "rooms": 5,
@@ -177,7 +220,16 @@
     "operation_type": "rent",
     "type": "apartment",
     "images": [
-      "/Media/foto10.jpg"
+      {
+        "url": "/Media/foto10.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-11T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto13.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-12T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "APT-MYSI"
@@ -186,8 +238,7 @@
     "id": 11,
     "title": "Moderno Loft en Palermo",
     "description": "Estilo industrial con techos altos y mucha luz natural.",
-    "country": "Argentina",
-    "city": "Buenos Aires",
+    "city_id": 2,
     "price": 125000,
     "square_meters": 45,
     "rooms": 1,
@@ -195,8 +246,16 @@
     "operation_type": "rent",
     "type": "apartment",
     "images": [
-      "/Media/foto11.jpg",
-      "/Media/foto14.jpg"
+      {
+        "url": "/Media/foto11.jpg",
+        "is_primary": true,
+        "created_at": "2024-06-12T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto14.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-13T12:00:00Z"
+      }
     ],
     "featured": true,
     "reference_code": "APT-JTX1"
@@ -205,8 +264,7 @@
     "id": 12,
     "title": "Departamento en Buenos Aires",
     "description": "Ubicación céntrica, ideal para inversión.",
-    "country": "Argentina",
-    "city": "Buenos Aires",
+    "city_id": 2,
     "price": 80000,
     "square_meters": 60,
     "rooms": 2,
@@ -214,8 +272,16 @@
     "operation_type": "sale",
     "type": "apartment",
     "images": [
-      "/Media/foto12.jpeg",
-      "/Media/foto15.jpg"
+      {
+        "url": "/Media/foto12.jpeg",
+        "is_primary": true,
+        "created_at": "2024-06-13T12:00:00Z"
+      },
+      {
+        "url": "/Media/foto15.jpg",
+        "is_primary": false,
+        "created_at": "2024-06-14T12:00:00Z"
+      }
     ],
     "featured": false,
     "reference_code": "APT-PPGX"
